@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="t d" width="24" height="24">
+<title id="t">Siguiente</title>
+<desc id="d">Flecha azul hacia la derecha: continuar o paso siguiente.</desc>
+<g fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3.5 12h16"/><path d="M13.5 5.5l6.5 6.5-6.5 6.5"/>
+</g>
+</svg>

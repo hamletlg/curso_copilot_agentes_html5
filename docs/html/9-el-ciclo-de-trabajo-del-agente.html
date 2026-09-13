@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260913145251YNC85U">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9. El ciclo de trabajo del agente | Agentes de IA y Microsoft Copilot para tu día a día</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+<style>
+/* Bloques sin titular: sin franja de cabecera ni botón de plegado suelto. */
+body.exe-export .box.no-header > header.box-head{min-height:0 !important;border-bottom:0 !important;padding:0 !important}
+body.exe-export .box.no-header .box-toggle{display:none !important}
+/* Navegación «Anterior / Siguiente» al pie de la página, en el flujo y alineada con la columna de
+   texto (Nova la fija arriba a la derecha). El div .nav-buttons ya viene en el HTML justo después de
+   </main>; el post-proceso lo mete dentro de <main> para que herede el hueco del menú lateral y los
+   puntos de ruptura del tema. Es el mismo esquema que usa .page-content. */
+body.exe-export .nav-buttons{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  flex-wrap:wrap;max-width:1280px;margin:40px auto 0;padding:0 90px}
+body.exe-export .nav-buttons .nav-button{position:static;top:auto;right:auto}
+/* Nova oculta las etiquetas de los botones por debajo de 1024 px porque arriba compartían barra con
+   los togglers; al pie vuelve a caber el texto, así que se recuperan. */
+@media (max-width:1024px){
+  body.exe-export .nav-buttons .nav-button{height:auto;width:auto;padding:18px}
+  body.exe-export .nav-buttons .nav-button-left{padding-left:48px;background-position:left 14px center}
+  body.exe-export .nav-buttons .nav-button-right{padding-right:48px;background-position:right 14px center}
+  body.exe-export .nav-buttons .nav-button span{display:inline}}
+/* los mismos márgenes que .page-content en cada punto de ruptura del tema */
+@media (max-width:750px){body.exe-export .nav-buttons{padding:0 20px;margin:0 auto}}
+@media (max-width:650px){body.exe-export .nav-buttons{padding:0 30px}}
+/* Portada. Por defecto el texto va DEBAJO de la imagen: es lo seguro a cualquier ancho y en
+   cualquier navegador. Cuando la columna de contenido da de sí (container query sobre la propia
+   portada, no sobre el viewport: el tema cambia la columna según el menú lateral), el título pasa a
+   superponerse sobre la foto. La foto es clara por zonas (contraste medio del blanco: 4,96:1 en la
+   franja baja y hasta 2,87:1 en la esquina inferior derecha), así que el texto superpuesto va sobre
+   un degradado oscuro Y con sombra propia. */
+body.exe-export .portada{position:relative;margin:0 0 1.6em;overflow:hidden;border-radius:12px}
+body.exe-export .portada > img{display:block;width:100%;height:auto;margin:0}
+body.exe-export .portada .portada-texto{line-height:1.3;padding:1.1em 0 0}
+body.exe-export .portada .portada-titulo{margin:0 0 .3em;font-weight:800;line-height:1.15;color:#282573;
+  font-size:clamp(1.35rem,2.4vw,2rem) !important}
+body.exe-export .portada .portada-subtitulo{margin:0;color:#3c3c3c;
+  font-size:clamp(1rem,1.5vw,1.15rem) !important}
+body.exe-export .portada .portada-datos{margin:.7em 0 0}
+body.exe-export .portada .portada-datos p{margin:0;color:#3c3c3c;
+  font-size:clamp(.85rem,1.1vw,.95rem) !important}
+body.exe-export .portada{container-type:inline-size}
+@container (min-width:520px){
+  body.exe-export .portada .portada-texto{position:absolute;left:0;right:0;bottom:0;padding:
+    clamp(30px,6.5cqw,84px) clamp(18px,5cqw,64px) clamp(16px,3.5cqw,44px);
+    /* el degradado llega a .62 antes de que empiece el texto: por debajo hay píxeles muy claros
+       (pantalla del móvil, cuaderno) y con menos opacidad el blanco se perdía */
+    background:linear-gradient(180deg,rgba(8,12,26,0) 0%,rgba(8,12,26,.62) 20%,rgba(8,12,26,.86) 46%,rgba(8,12,26,.91) 100%)}
+  body.exe-export .portada .portada-titulo{color:#fff;font-size:clamp(1.3rem,4.2cqw,2.6rem) !important;
+    text-shadow:0 1px 3px rgba(0,0,0,.95),0 3px 10px rgba(0,0,0,.8),0 8px 30px rgba(0,0,0,.65)}
+  body.exe-export .portada .portada-subtitulo{color:#fff;font-size:clamp(.95rem,2cqw,1.3rem) !important;
+    text-shadow:0 1px 3px rgba(0,0,0,.95),0 3px 10px rgba(0,0,0,.75)}
+  body.exe-export .portada .portada-datos p{color:#fff;opacity:.95;
+    font-size:clamp(.8rem,1.4cqw,.95rem) !important;
+    text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
+  body.exe-export .portada .portada-datos strong{color:#fff}
+}
+</style>
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251YNC85U" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
+</li>
+<li> <a href="../html/2-indice-y-objetivos.html" class="no-ch">2. ÍNDICE Y OBJETIVOS</a>
+</li>
+<li> <a href="../html/3-que-es-la-ia-de-la-ia-al-agente.html" class="no-ch">3. ¿Qué es la IA? De la IA al agente</a>
+</li>
+<li> <a href="../html/4-que-puede-y-que-no-puede-hacer-la-ia.html" class="no-ch">4. Qué puede y qué no puede hacer la IA</a>
+</li>
+<li> <a href="../html/5-que-es-un-agente-de-ia.html" class="no-ch">5. ¿Qué es un agente de IA?</a>
+</li>
+<li> <a href="../html/6-copilot-web-y-copilot-de-trabajo.html" class="no-ch">6. Copilot Web y Copilot de Trabajo</a>
+</li>
+<li> <a href="../html/7-los-5-componentes-del-agente.html" class="no-ch">7. Los 5 componentes del agente</a>
+</li>
+<li> <a href="../html/8-los-tipos-de-agente-de-microsoft.html" class="no-ch">8. Los tipos de agente de Microsoft</a>
+</li>
+<li class="active"> <a href="../html/9-el-ciclo-de-trabajo-del-agente.html" class="active no-ch">9. El ciclo de trabajo del agente</a>
+</li>
+<li> <a href="../html/10-copilot-en-word-outlook-y-onenote.html" class="no-ch">10. Copilot en Word, Outlook y OneNote</a>
+</li>
+<li> <a href="../html/11-copilot-en-excel-powerpoint-y-teams.html" class="no-ch">11. Copilot en Excel, PowerPoint y Teams</a>
+</li>
+<li> <a href="../html/12-copilot-en-sharepoint-loop-y-planificacion.html" class="no-ch">12. Copilot en SharePoint, Loop y planificación</a>
+</li>
+<li> <a href="../html/13-crear-tu-propio-agente-con-agent-builder.html" class="no-ch">13. Crear tu propio agente con Agent Builder</a>
+</li>
+<li> <a href="../html/14-el-inventario-de-ia-de-tu-empresa.html" class="no-ch">14. El inventario de IA de tu empresa</a>
+</li>
+<li> <a href="../html/15-como-escribir-buenas-instrucciones.html" class="no-ch">15. Cómo escribir buenas instrucciones</a>
+</li>
+<li> <a href="../html/16-buenas-practicas.html" class="no-ch">16. Buenas prácticas</a>
+</li>
+<li> <a href="../html/17-riesgos-y-limites.html" class="no-ch">17. Riesgos y límites</a>
+</li>
+<li> <a href="../html/18-permisos-sobreexposicion-y-shadow-ai.html" class="no-ch">18. Permisos, sobreexposición y shadow AI</a>
+</li>
+<li> <a href="../html/19-politica-de-uso-y-protocolo-de-incidentes.html" class="no-ch">19. Política de uso y protocolo de incidentes</a>
+</li>
+<li> <a href="../html/20-el-ai-act-en-terminos-simples.html" class="no-ch">20. El AI Act en términos simples</a>
+</li>
+<li> <a href="../html/21-articulo-4-que-te-obliga-y-que-debes-poder-demo.html" class="no-ch">21. Artículo 4: qué te obliga y qué debes poder demostrar</a>
+</li>
+<li> <a href="../html/22-datos-personales-derechos-y-supervision-humana.html" class="no-ch">22. Datos personales, derechos y supervisión humana</a>
+</li>
+<li> <a href="../html/23-ejercicios-practicos.html" class="no-ch">23. EJERCICIOS PRÁCTICOS</a>
+</li>
+<li> <a href="../html/24-evaluacion-final.html" class="no-ch">24. EVALUACIÓN FINAL</a>
+</li>
+<li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
+</li>
+</ul>
+</nav><main id="20260913145251YNC85U" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
+<div class="page-header"><h1 class="page-title">9. El ciclo de trabajo del agente</h1></div>
+</header><div id="page-content-20260913145251YNC85U" class="page-content">
+<article id="20260913145251B1QS9B" class="box no-header">
+<header class="box-head no-icon">
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260913145251IEYIE2" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251IEYIE2&quot;}">
+<div class="exe-text-template"><div class="textIdeviceContent">
+  <div class="exe-text-activity">
+    <div>
+      <div class="exe-text"><img src="../content/resources/diagrama_ciclo_5_pasos.png" alt="Diagrama circular con los cinco pasos del ciclo de trabajo, unidos por flechas: recibir la orden, planificar, ejecutar, verificar y entregar" width="640" height="640" style="display:block;margin:0 auto;"><p>Un agente de Microsoft Copilot trabaja en un ciclo continuo de cinco pasos. Entender este ciclo te ayuda a saber qué esperar y cómo interactuar con él.</p>
+<ol><li><strong>Recibir la orden</strong><p>Tú le dices a Copilot qué quieres, ya sea en el chat, directamente en Word, Excel o Teams. Cuanto más claro seas, mejor será el resultado.</p><p><em>Ejemplo:</em> "Necesito un resumen de las ventas del último trimestre por región."</p></li><li><strong>Planificar</strong><p>Copilot piensa: ¿qué datos necesito? ¿Qué herramientas voy a usar? ¿En qué orden? Si usa Cowork, crea un plan detallado con pasos y te lo muestra para tu aprobación (Cowork es el agente de Microsoft que ejecuta tareas de varios pasos en segundo plano: tú describes el resultado, él planifica, ejecuta paso a paso y se detiene en los puntos de aprobación).</p><p><em>Ejemplo:</em> Copilot decide que necesita consultar el archivo de Excel de ventas, filtrar por trimestre y preparar un gráfico.</p></li><li><strong>Ejecutar</strong><p>Copilot usa las herramientas: accede a los datos, procesa la información, genera el resultado. Si es Cowork, ejecuta los pasos uno a uno y te va mostrando el progreso.</p><p><em>Ejemplo:</em> Consulta el Excel, extrae los datos, crea el gráfico y redacta el resumen.</p></li><li><strong>Verificar</strong><p>Copilot revisa que el resultado sea correcto y completo antes de entregártelo. Pero tú también debes verificar: los agentes pueden equivocarse.</p><p><em>Ejemplo:</em> Comprueba que los datos coinciden con lo que hay en el Excel.</p></li><li><strong>Entregar y aprender</strong><p>Te entrega el resultado y, si le das feedback, recuerda qué hizo bien y qué puede mejorar en la misma sesión.</p><p><em>Ejemplo:</em> "Aquí tienes el resumen. ¿Quieres que profundice en alguna región?"</p></li></ol></div>
+    </div>
+    <p class="clearfix"></p>
+  </div>
+</div></div>
+</div>
+</div>
+</article>
+</div><div class="nav-buttons">
+<a href="../html/8-los-tipos-de-agente-de-microsoft.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/10-copilot-en-word-outlook-y-onenote.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+</main><footer id="siteFooter" class="siteFooter-empty"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

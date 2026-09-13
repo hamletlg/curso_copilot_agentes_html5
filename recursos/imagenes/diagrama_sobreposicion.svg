@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t d" width="800" height="500">
+<title id="t">Copilot hereda los permisos: dos escenarios</title>
+<desc id="d">Comparación de dos escenarios. A la izquierda, un sitio de SharePoint con permisos abiertos: Copilot muestra documentos confidenciales a cualquier persona del equipo. A la derecha, el mismo sitio con permisos revisados: cada persona ve solo lo que le corresponde.</desc>
+<rect width="800" height="500" fill="#FFFFFF"/>
+<text x="400" y="46" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1E293B">Copilot hereda los permisos: dos escenarios</text>
+<text x="400" y="74" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="16" fill="#1E293B" opacity="0.75">Si el permiso estaba mal, Copilot no lo arregla: lo reproduce</text>
+
+<rect x="40" y="102" width="345" height="356" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="62" y="136" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#991B1B">Permisos abiertos</text>
+<line x1="62" y1="150" x2="363" y2="150" stroke="#991B1B" stroke-width="2"/>
+<text x="62" y="180" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Sitio de SharePoint con acceso</text>
+<text x="62" y="200" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#1E293B">«Todos excepto usuarios externos»</text>
+<circle cx="70" cy="228" r="5" fill="#991B1B"/>
+<text x="86" y="233" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Nóminas del personal</text>
+<circle cx="70" cy="256" r="5" fill="#991B1B"/>
+<text x="86" y="261" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Tarifas de proveedores</text>
+<circle cx="70" cy="284" r="5" fill="#991B1B"/>
+<text x="86" y="289" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Ofertas a clientes</text>
+<line x1="212" y1="304" x2="212" y2="336" stroke="#991B1B" stroke-width="2"/>
+<path d="M204 332 L212 344 L220 332 Z" fill="#991B1B"/>
+<rect x="132" y="348" width="160" height="36" rx="18" fill="#2563EB"/>
+<text x="212" y="372" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Copilot</text>
+<text x="62" y="412" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#991B1B" font-weight="700">Cualquier persona del equipo</text>
+<text x="62" y="434" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">puede verlas desde Copilot</text>
+
+<rect x="415" y="102" width="345" height="356" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="437" y="136" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#15803D">Permisos revisados</text>
+<line x1="437" y1="150" x2="738" y2="150" stroke="#15803D" stroke-width="2"/>
+<text x="437" y="180" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Sitio de SharePoint con acceso</text>
+<text x="437" y="200" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#1E293B">«Solo el equipo de dirección»</text>
+<circle cx="445" cy="228" r="5" fill="#15803D"/>
+<text x="461" y="233" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Nóminas del personal</text>
+<circle cx="445" cy="256" r="5" fill="#15803D"/>
+<text x="461" y="261" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Tarifas de proveedores</text>
+<circle cx="445" cy="284" r="5" fill="#15803D"/>
+<text x="461" y="289" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">Ofertas a clientes</text>
+<line x1="587" y1="304" x2="587" y2="336" stroke="#15803D" stroke-width="2"/>
+<path d="M579 332 L587 344 L595 332 Z" fill="#15803D"/>
+<rect x="507" y="348" width="160" height="36" rx="18" fill="#2563EB"/>
+<text x="587" y="372" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Copilot</text>
+<text x="437" y="412" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#15803D" font-weight="700">Cada persona ve solo</text>
+<text x="437" y="434" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B">lo que le corresponde</text>
+</svg>

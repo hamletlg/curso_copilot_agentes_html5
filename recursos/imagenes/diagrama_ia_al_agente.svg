@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t d" width="800" height="500">
+<title id="t">De la IA al agente: cuatro conceptos</title>
+<desc id="d">Cuatro filas numeradas: inteligencia artificial, IA generativa, modelos de lenguaje y agentes de IA, cada una con una descripción breve.</desc>
+<rect width="800" height="500" fill="#FFFFFF"/>
+<text x="400" y="48" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1E293B">De la IA al agente: cuatro conceptos</text>
+<text x="400" y="76" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="16" fill="#1E293B" opacity="0.75">Cada nivel añade capacidad y también responsabilidad</text>
+
+<rect x="50" y="110" width="700" height="82" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<circle cx="100" cy="151" r="26" fill="#2563EB"/>
+<text x="100" y="159" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">1</text>
+<text x="145" y="144" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#1E293B">Inteligencia artificial (IA)</text>
+<text x="145" y="170" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B" opacity="0.78">Programas que resuelven tareas que asociamos a la inteligencia humana</text>
+
+<rect x="50" y="206" width="700" height="82" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<circle cx="100" cy="247" r="26" fill="#2563EB"/>
+<text x="100" y="255" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">2</text>
+<text x="145" y="240" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#1E293B">IA generativa</text>
+<text x="145" y="266" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B" opacity="0.78">Crea contenido nuevo: texto, imágenes, audio y también código</text>
+
+<rect x="50" y="302" width="700" height="82" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+<circle cx="100" cy="343" r="26" fill="#2563EB"/>
+<text x="100" y="351" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">3</text>
+<text x="145" y="336" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#1E293B">Modelo de lenguaje (LLM)</text>
+<text x="145" y="362" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B" opacity="0.78">El motor que calcula la siguiente palabra: por eso puede inventar datos</text>
+
+<rect x="50" y="398" width="700" height="82" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<circle cx="100" cy="439" r="26" fill="#2563EB"/>
+<text x="100" y="447" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">4</text>
+<text x="145" y="432" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#1E293B">Agente de IA</text>
+<text x="145" y="458" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="15" fill="#1E293B" opacity="0.78">Un LLM con herramientas y permiso para actuar: planifica y ejecuta</text>
+</svg>

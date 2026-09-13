@@ -1,0 +1,19 @@
+# Archivos que NO van al repositorio de portafolio
+
+# Material descartado y cursos anteriores (documentación interna del proceso)
+legado_articulate/
+
+# Intermedios y revisiones anteriores de los entregables (se regeneran)
+entregables/historial/
+entregables/_trabajo/
+entregables/html5_preview/
+entregables/capturas/rev5/
+
+# Copias de seguridad de los documentos fuente
+*.bak.*
+backups_guion/
+
+# Entorno
+__pycache__/
+*.pyc
+.venv/
