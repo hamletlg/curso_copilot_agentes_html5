@@ -1,0 +1,10 @@
+{
+  "modelo": "gemma4-12b",
+  "intentos": [
+    {
+      "intento": 1,
+      "segundos": 180.1,
+      "problemas": []
+    }
+  ]
+}
