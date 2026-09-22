@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251EBQJRV">
+<html lang="es" id="exe-20260922113957EBQJRV">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -64,11 +64,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251EBQJRV" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957EBQJRV" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -121,25 +136,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251EBQJRV" class="page"> 
+</nav><main id="20260922113957EBQJRV" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">15. Cómo escribir buenas instrucciones</h1></div>
-</header><div id="page-content-20260913145251EBQJRV" class="page-content">
-<article id="20260913145251MUY6BR" class="box no-header">
+</header><div id="page-content-20260922113957EBQJRV" class="page-content">
+<article id="20260922113957MUY6BR" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251XA4UWZ" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251XA4UWZ&quot;}">
+<div id="20260922113957XA4UWZ" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957XA4UWZ&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><p>Copilot es tan bueno como la instrucción que le das. Aquí tienes las reglas de oro:</p>
-<div class="exe-fx exe-accordion"><div id="exe-accordion-0"><div class="fx-accordion-section"><a class="fx-accordion-title fx-accordion-title-0 fx-C1" href="#exe-accordion-0-0" id="exe_accordion_0-0-trigger"><h2>Sección 1: Sé específico con el objetivo</h2></a><div class="fx-accordion-content" id="exe-accordion-0-0"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Haz un resumen."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Prepara un resumen de una página con los puntos clave del informe de ventas del segundo trimestre, enfocado en las regiones con mayor crecimiento."</em></p></div><a class="fx-accordion-title fx-accordion-title-1 fx-C1" href="#exe-accordion-0-1" id="exe_accordion_0-1-trigger"><h2>Sección 2: Da contexto y referencia archivos</h2></a><div class="fx-accordion-content" id="exe-accordion-0-1"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Analiza estos datos."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Analiza los datos de ventas del archivo 'Ventas_Q3.xlsx' comparando el trimestre actual con el mismo trimestre del año pasado. Destaca los productos que han crecido más del 10%."</em></p></div><a class="fx-accordion-title fx-accordion-title-2 fx-C1" href="#exe-accordion-0-2" id="exe_accordion_0-2-trigger"><h2>Sección 3: Define el formato de salida</h2></a><div class="fx-accordion-content" id="exe-accordion-0-2"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Dame información."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Dame los resultados en una tabla con tres columnas: producto, porcentaje de cambio y tendencia (sube/baja/se mantiene)."</em></p></div><a class="fx-accordion-title fx-accordion-title-3 fx-C1" href="#exe-accordion-0-3" id="exe_accordion_0-3-trigger"><h2>Sección 4: Indica el tono y la audiencia</h2></a><div class="fx-accordion-content" id="exe-accordion-0-3"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Escribe algo sobre seguridad."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Escribe un párrafo de 100 palabras sobre seguridad informática dirigido a empleados no técnicos, con un tono cercano y práctico."</em></p></div><a class="fx-accordion-title fx-accordion-title-4 fx-C1" href="#exe-accordion-0-4" id="exe_accordion_0-4-trigger"><h2>Sección 5: Pide verificación</h2></a><div class="fx-accordion-content" id="exe-accordion-0-4"><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Antes de enviar el correo, muéstrame el borrador para que lo revise."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Indica qué datos has usado para llegar a esta conclusión."</em></p></div></div></div></div></div>
+      <div class="exe-text"><p>La calidad de los resultados de Copilot depende de la precisión de tus instrucciones. Sigue estas pautas:</p>
+<div class="exe-fx exe-accordion"><div id="exe-accordion-0"><div class="fx-accordion-section"><a class="fx-accordion-title fx-accordion-title-0 fx-C1" href="#exe-accordion-0-0" id="exe_accordion_0-0-trigger"><h2>Sección 1: Sé específico con el objetivo</h2></a><div class="fx-accordion-content" id="exe-accordion-0-0"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Haz un resumen."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Prepara un resumen de una página con los puntos clave del informe de ventas del segundo trimestre. Enfócate en las regiones con mayor crecimiento."</em></p></div><a class="fx-accordion-title fx-accordion-title-1 fx-C1" href="#exe-accordion-0-1" id="exe_accordion_0-1-trigger"><h2>Sección 2: Da contexto y referencia archivos</h2></a><div class="fx-accordion-content" id="exe-accordion-0-1"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Analiza estos datos."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Analiza los datos de ventas del archivo 'Ventas_Q3.xlsx'. Compara el trimestre actual con el mismo periodo del año pasado y destaca los productos con un crecimiento superior al 10%."</em></p></div><a class="fx-accordion-title fx-accordion-title-2 fx-C1" href="#exe-accordion-0-2" id="exe_accordion_0-2-trigger"><h2>Sección 3: Define el formato de salida</h2></a><div class="fx-accordion-content" id="exe-accordion-0-2"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Dame información."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Presenta los resultados en una tabla de tres columnas: producto, porcentaje de cambio y tendencia (sube, baja o se mantiene)."</em></p></div><a class="fx-accordion-title fx-accordion-title-3 fx-C1" href="#exe-accordion-0-3" id="exe_accordion_0-3-trigger"><h2>Sección 4: Indica el tono y la audiencia</h2></a><div class="fx-accordion-content" id="exe-accordion-0-3"><p><img src="../content/resources/icono_cross.png" alt="Incorrecto" width="20" height="20"> Mal: <em>"Escribe algo sobre seguridad."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Escribe un párrafo de 100 palabras sobre seguridad informática para empleados sin perfil técnico. Usa un tono cercano y práctico."</em></p></div><a class="fx-accordion-title fx-accordion-title-4 fx-C1" href="#exe-accordion-0-4" id="exe_accordion_0-4-trigger"><h2>Sección 5: Pide verificación</h2></a><div class="fx-accordion-content" id="exe-accordion-0-4"><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Antes de enviar el correo, muéstrame el borrador para que lo revise."</em></p><p><img src="../content/resources/icono_check.png" alt="Correcto" width="20" height="20"> Bien: <em>"Indica qué datos has usado para llegar a esta conclusión."</em></p></div></div></div></div></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251Q52YN8">
+<html lang="es" id="exe-20260922113957Q52YN8">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251Q52YN8" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957Q52YN8" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,26 +134,27 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251Q52YN8" class="page"> 
+</nav><main id="20260922113957Q52YN8" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">13. Crear tu propio agente con Agent Builder</h1></div>
-</header><div id="page-content-20260913145251Q52YN8" class="page-content">
-<article id="20260913145251TN8KAP" class="box no-header">
+</header><div id="page-content-20260922113957Q52YN8" class="page-content">
+<article id="20260922113957TN8KAP" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251QKQ2MT" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251QKQ2MT&quot;}">
+<div id="20260922113957QKQ2MT" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957QKQ2MT&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><p>Microsoft te permite crear agentes personalizados sin saber programar. Con Agent Builder puedes crear:</p><p><strong>Agentes de preguntas frecuentes</strong></p><p>Un agente que responda a los empleados sobre políticas de la empresa, basado en los documentos de Recursos Humanos de SharePoint.</p><p><em>Ejemplo:</em> Creas un agente llamado "RRHH Bot" que lee las políticas de vacaciones, bajas y beneficios de los documentos oficiales y responde a las preguntas de los empleados.</p><p><strong>Agentes de documentación</strong></p><p>Un agente que ayude a los empleados a encontrar información en manuales internos, wikis o documentación técnica.</p><p><em>Ejemplo:</em> Un agente que responda <em>"¿Cómo se configura el acceso al servidor de producción?"</em> consultando la documentación técnica de IT.</p><p><strong>Agentes de onboarding</strong></p><p>Un agente que guíe a los nuevos empleados, respondiendo preguntas sobre procesos, herramientas y personas clave.</p><p><em>Ejemplo:</em> <em>"¿Quién es mi responsable de TI para solicitar acceso al CRM?"</em> El agente busca en tu organización y te da la respuesta.</p>
-<blockquote><p><strong>Pasos para crear un agente:</strong></p></blockquote><ol><li>Abre Copilot en Microsoft 365</li><li>Haz clic en "Crear agente" (Agent Builder)</li><li>Describe qué hace tu agente y en lenguaje natural le das instrucciones</li><li>Conecta las fuentes de datos (documentos de SharePoint, archivos, páginas web)</li><li>Prueba el agente y compártelo con tu equipo</li></ol>
-<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> Agent Builder sirve para crear <strong>agentes especializados (nivel 2)</strong>: sencillos, con un rol y una base de conocimiento acotada, ideales para uso individual o de equipo pequeño. Cuando necesitas un <strong>agente avanzado (nivel 3)</strong> —flujos de varios pasos, acciones sobre sistemas externos y disparadores—, la herramienta es Copilot Studio.</p></blockquote></div>
+      <div class="exe-text"><p>Microsoft permite crear agentes personalizados sin conocimientos de programación. Con Agent Builder puedes generar:</p><p><strong>Agentes de preguntas frecuentes</strong></p><p>Estos agentes responden a las consultas de los empleados sobre las políticas de la empresa, utilizando como base los documentos de Recursos Humanos en SharePoint.</p><p><em>Ejemplo:</em> El agente "RRHH Bot" consulta las políticas de vacaciones, bajas y beneficios en los documentos oficiales para responder a las dudas del personal.</p><p><strong>Agentes de documentación</strong></p><p>Estos agentes facilitan la localización de información en manuales internos, wikis o documentación técnica.</p><p><em>Ejemplo:</em> Un agente que responda a la pregunta "¿Cómo se configura el acceso al servidor de producción?" consultando la documentación técnica de IT.</p><p><strong>Agentes de onboarding</strong></p><p>Estos agentes orientan a los nuevos empleados respondiendo preguntas sobre procesos, herramientas y contactos clave.</p><p><em>Ejemplo:</em> Ante la pregunta "¿Quién es mi responsable de TI para solicitar acceso al CRM?", el agente busca en la organización y facilita la respuesta.</p>
+<blockquote><p><strong>Pasos para crear un agente:</strong></p></blockquote><ol><li>Abre Copilot en Microsoft 365.</li><li>Haz clic en "Crear agente" (Agent Builder).</li><li>Describe la función del agente y proporciona instrucciones en lenguaje natural.</li><li>Conecta las fuentes de datos (documentos de SharePoint, archivos o páginas web).</li><li>Prueba el agente y compártelo con tu equipo.</li></ol>
+<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> Agent Builder sirve para crear <strong>agentes especializados (nivel 2)</strong>. Son soluciones sencillas con un rol definido y una base de conocimiento acotada, adecuadas para el uso individual o de equipos pequeños. Para desarrollar un <strong>agente avanzado (nivel 3)</strong> que incluya flujos de varios pasos, acciones en sistemas externos y disparadores, la herramienta correspondiente es Copilot Studio.</p></blockquote></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

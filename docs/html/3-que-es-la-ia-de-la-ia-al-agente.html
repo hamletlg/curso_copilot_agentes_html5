@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-2026091314525110EFMM">
+<html lang="es" id="exe-2026092211395710EFMM">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#2026091314525110EFMM" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#2026092211395710EFMM" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="2026091314525110EFMM" class="page"> 
+</nav><main id="2026092211395710EFMM" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">3. ¿Qué es la IA? De la IA al agente</h1></div>
-</header><div id="page-content-2026091314525110EFMM" class="page-content">
-<article id="20260913145251XKFN07" class="box no-header">
+</header><div id="page-content-2026092211395710EFMM" class="page-content">
+<article id="20260922113957XKFN07" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251EJJKEN" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251EJJKEN&quot;}">
+<div id="20260922113957EJJKEN" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957EJJKEN&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
       <div class="exe-text"><img src="../content/resources/diagrama_ia_al_agente.png" alt="Diagrama en cuatro filas numeradas, de lo más general a lo más concreto: la inteligencia artificial, la IA generativa, los modelos de lenguaje y los agentes de IA, con una descripción breve en cada fila" width="640" height="400" style="display:block;margin:0 auto;">
-<h4>¿Qué es la inteligencia artificial?</h4><p>La <strong>inteligencia artificial (IA)</strong> es el conjunto de programas que resuelven tareas que asociamos a la inteligencia humana: reconocer una imagen, clasificar un correo, ordenar cientos de datos o escribir un texto. No es magia ni un cerebro: son <strong>datos y matemáticas</strong>.</p><p>Dentro de la IA, el <strong>aprendizaje automático</strong> (machine learning) es la parte que <strong>aprende patrones a partir de ejemplos</strong> en lugar de seguir reglas escritas a mano: en vez de programar "si pasa esto, haz aquello", se le muestran miles de casos y encuentra las regularidades por sí mismo.</p><h4>Cuatro conceptos que se confunden todo el tiempo</h4><ul><li><strong>Inteligencia artificial:</strong> cualquier programa que resuelve tareas que asociamos a las personas.</li><li><strong>IA generativa:</strong> la que <strong>crea contenido nuevo</strong> (texto, imagen, audio, código), en lugar de limitarse a clasificar o predecir.</li><li><strong>Modelo de lenguaje (LLM):</strong> el motor de la IA generativa de texto. No consulta una verdad ni una base de datos: <strong>calcula qué palabra es más probable a continuación</strong>, palabra a palabra, a partir de los patrones que aprendió.</li><li><strong>Agente de IA:</strong> un modelo de lenguaje al que se le dan <strong>herramientas y permiso para actuar</strong> sobre tus sistemas.</li></ul><p>Cada escalón añade capacidad y también responsabilidad: cuanto más puede hacer el sistema por sí solo, más importa qué le has dejado hacer.</p><h4>Por qué se equivoca (sin querer)</h4><p>Un modelo de lenguaje se entrena con enormes cantidades de texto. De ahí saca patrones: qué palabras suelen ir juntas, cómo se estructura un informe, cómo suena un correo formal. De ahí salen sus dos caras:</p><ul><li><strong>Acierta</strong> cuando la tarea admite muchas respuestas válidas: redactar un borrador, resumir, reescribir, traducir, clasificar, buscar con lenguaje natural.</li><li><strong>Falla</strong> cuando importa un dato exacto: puede inventar una cifra, una fecha, una norma o una cita <strong>con total seguridad</strong>. Es lo que llamamos <strong>alucinación</strong>, y no ocurre por maldad: ocurre porque su objetivo es escribir algo <strong>verosímil</strong>, no algo <strong>verdadero</strong>.</li></ul><p>Hay una segunda consecuencia que importa en la oficina: si el texto con el que se entrenó el modelo contiene <strong>sesgos</strong> (de género, culturales, de origen, de nivel económico), el modelo los reproduce. No porque "piense así", sino porque copia el patrón que ha visto. Preguntar por una persona y obtener una respuesta estereotipada es un síntoma de esto, no una opinión del sistema.</p><h4>Y entonces, ¿para qué sirve?</h4><p>Para <strong>quitar trabajo mecánico del medio</strong>: partir de un borrador, resumir lo largo, ordenar lo desordenado, encontrar lo que ya estaba en tus documentos. Lo que no hace es <strong>responder por ti</strong>: el criterio, la responsabilidad y la decisión sobre personas siguen siendo tuyos.</p><h4>Lo que tienes que recordar de esta página</h4><ul><li>La IA no "sabe" cosas: <strong>calcula lo más probable</strong>.</li><li>Cuatro conceptos, cuatro capacidades distintas: IA, IA generativa, modelo de lenguaje y agente.</li><li>Se equivoca <strong>inventando y repitiendo sesgos</strong>; por eso todo dato con consecuencias se verifica.</li></ul></div>
+<h4>¿Qué es la inteligencia artificial?</h4><p>La <strong>inteligencia artificial (IA)</strong> es un conjunto de programas diseñados para realizar tareas que suelen requerir capacidad cognitiva humana, como reconocer imágenes, clasificar correos electrónicos, organizar grandes volúmenes de datos o redactar textos. Su funcionamiento se basa en <strong>datos y matemáticas</strong>, no en procesos biológicos ni en capacidades mágicas.</p><p>Dentro de la IA, el <strong>aprendizaje automático</strong> (machine learning) es la rama que identifica patrones a partir de ejemplos. En lugar de seguir instrucciones programadas paso a paso (como "si ocurre X, ejecuta Y"), el sistema analiza miles de casos para detectar regularidades estadísticas por sí mismo.</p><h4>Cuatro conceptos que se confunden todo el tiempo</h4><ul><li><strong>Inteligencia artificial:</strong> cualquier programa capaz de ejecutar tareas que suelen realizar las personas.</li><li><strong>IA generativa:</strong> tecnología que <strong>genera contenido nuevo</strong> (texto, imagen, audio o código) en lugar de limitarse a tareas de clasificación o predicción.</li><li><strong>Modelo de lenguaje (LLM):</strong> el componente que impulsa la IA generativa de texto. No consulta una base de datos ni verifica la verdad; <strong>calcula la palabra más probable a continuación</strong> basándose en los patrones detectados durante su entrenamiento.</li><li><strong>Agente de IA:</strong> un modelo de lenguaje con <strong>herramientas y permisos para actuar</strong> sobre sistemas específicos.</li></ul><p>Cada nivel de autonomía aumenta la responsabilidad sobre las acciones que el sistema puede ejecutar por sí solo.</p><h4>Por qué se equivoca (sin querer)</h4><p>Los modelos de lenguaje se entrenan con volúmenes masivos de texto para identificar patrones: combinaciones de palabras, estructuras de informes o estilos de redacción formal. Esto explica su comportamiento en dos escenarios:</p><ul><li><strong>Es eficaz</strong> en tareas con múltiples respuestas válidas, como redactar borradores, resumir, traducir, clasificar o realizar búsquedas mediante lenguaje natural.</li><li><strong>Comete errores</strong> cuando se requiere precisión en los datos. El sistema puede generar cifras, fechas, normas o citas incorrectas con apariencia de seguridad. Este fenómeno se conoce como <strong>alucinación</strong> y ocurre porque el objetivo del modelo es producir un texto <strong>verosímil</strong>, no necesariamente <strong>verdadero</strong>.</li></ul><p>Existe otra consecuencia relevante para el entorno laboral: si los datos de entrenamiento contienen <strong>sesgos</strong> (de género, culturales o económicos), el modelo los replicará. El sistema no tiene opiniones; simplemente copia los patrones presentes en sus datos de origen. Una respuesta estereotipada es un reflejo de esos datos, no una decisión del modelo.</p><h4>Y entonces, ¿para qué sirve?</h4><p>Su función principal es <strong>automatizar tareas mecánicas</strong>: generar borradores, resumir textos extensos, organizar información o localizar datos en documentos existentes. La IA no sustituye tu criterio ni tu responsabilidad; la toma de decisiones sobre personas sigue siendo competencia humana.</p><h4>Lo que tienes que recordar de esta página</h4><ul><li>La IA no posee conocimiento: <strong>calcula probabilidades</strong>.</li><li>Existen cuatro conceptos con capacidades diferentes: IA, IA generativa, modelo de lenguaje y agente.</li><li>El sistema puede generar datos falsos o reproducir sesgos; por ello, es necesario verificar cualquier dato que tenga consecuencias.</li></ul></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

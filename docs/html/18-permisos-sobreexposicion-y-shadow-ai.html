@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251NKE6IS">
+<html lang="es" id="exe-20260922113957NKE6IS">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251NKE6IS" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957NKE6IS" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251NKE6IS" class="page"> 
+</nav><main id="20260922113957NKE6IS" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">18. Permisos, sobreexposición y shadow AI</h1></div>
-</header><div id="page-content-20260913145251NKE6IS" class="page-content">
-<article id="20260913145251B46F81" class="box no-header">
+</header><div id="page-content-20260922113957NKE6IS" class="page-content">
+<article id="20260922113957B46F81" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251OERELS" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251OERELS&quot;}">
+<div id="20260922113957OERELS" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957OERELS&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
       <div class="exe-text"><img src="../content/resources/diagrama_sobreposicion.png" alt="Diagrama comparativo: con permisos abiertos en SharePoint, Copilot muestra a cualquier persona documentos confidenciales; con los permisos revisados, Copilot solo muestra lo que corresponde a cada persona" width="640" height="400" style="display:block;margin:0 auto;">
-<h4>El riesgo número uno de una oficina con Microsoft 365</h4><p>Copilot de Trabajo no añade permisos nuevos: <strong>usa los que ya existen</strong>. Si un documento está al alcance de todo el equipo, Copilot lo enseñará a todo el equipo; si está mal compartido, Copilot es la vía más rápida para que alguien lo encuentre <strong>sin saber que no debía verlo</strong>.</p><p>A esto se le llama <strong>sobreexposición</strong> (oversharing): información que está más accesible de lo que la organización cree. Y no aparece por un ataque: aparece por años de carpetas compartidas con prisa.</p><h4>Cómo se produce, en la vida real</h4><ul><li>Un sitio de SharePoint con el permiso por defecto <strong>«Todos excepto usuarios externos»</strong>: cualquiera de dentro lo ve todo, incluido lo que debería ser de dirección.</li><li>Un <strong>enlace de uso compartido</strong> creado para una urgencia y nunca revisado, que sigue activo y sin caducidad.</li><li>Documentos sensibles guardados en la carpeta general de un equipo: nóminas, tarifas de proveedores, ofertas, expedientes de clientes, borradores de despidos.</li><li>Un sitio antiguo de un proyecto terminado, que nadie recuerda que existe y sigue con los permisos abiertos.</li></ul><p>Con Copilot delante, cualquiera puede escribir <em>«resume los datos de personal del último trimestre»</em> y recibir lo que antes solo aparecía si alguien entraba a buscar el archivo exacto.</p><h4>Qué se hace con esto</h4><ul><li><strong>Revisar los permisos de lo sensible primero.</strong> Nóminas, datos de clientes, precios y contratos no se guardan en carpetas abiertas, por cómodo que sea.</li><li><strong>Revisar los enlaces compartidos.</strong> Que lo que se compartió "temporalmente" tenga caducidad o esté cerrado.</li><li><strong>Usar las etiquetas de confidencialidad</strong> que tenga la organización: marcan el documento y viajan con él.</li><li><strong>Preguntar antes de crear un agente.</strong> Un agente hereda los permisos de las fuentes que le conectes: si le das acceso a una carpeta abierta, el agente la sirve a quien lo use.</li><li><strong>Saber a quién avisar.</strong> Un documento expuesto no es un problema de "informática": es un incidente que se comunica (Nodo 19).</li></ul><h4>Y de nuevo el shadow AI</h4><p>La sobreexposición es interna, pero comparte origen con el shadow AI: <strong>información que circula más de lo previsto</strong>. La regla es la misma en los dos casos: antes de pegar, subir o compartir, pregúntate si eso debería estar al alcance de quien lo va a ver.</p><blockquote><p><strong>Aviso:</strong> Copilot no "decide" qué enseñarte: reproduce lo que los permisos permiten. Si aparece algo que no deberías haber visto, el problema no es el asistente, es el permiso, y hay que reportarlo.</p></blockquote></div>
+<h4>El riesgo principal en una oficina con Microsoft 365</h4><p>Copilot de Trabajo no añade permisos nuevos: <strong>usa los que ya existen</strong>. Si un documento está al alcance de todo el equipo, Copilot lo mostrará a todos los usuarios. Si el documento está mal compartido, el asistente facilita que alguien acceda a la información <strong>sin saber que no tenía autorización</strong>.</p><p>Este fenómeno se denomina <strong>sobreexposición</strong> (oversharing). Se produce cuando la información es más accesible de lo que la organización prevé. No se trata de un ataque externo, sino del resultado de compartir carpetas de forma apresurada durante años.</p><h4>Cómo se produce, en la vida real</h4><ul><li>Un sitio de SharePoint con el permiso por defecto <strong>«Todos excepto usuarios externos»</strong>: cualquier persona interna puede ver todo el contenido, incluso información de dirección.</li><li>Un <strong>enlace de uso compartido</strong> creado para una urgencia que sigue activo y sin fecha de caducidad.</li><li>Documentos sensibles en la carpeta general de un equipo: nóminas, tarifas de proveedores, ofertas, expedientes de clientes o borradores de despidos.</li><li>Un sitio antiguo de un proyecto finalizado que permanece con los permisos abiertos.</li></ul><p>Con Copilot, cualquier usuario puede escribir <em>«resume los datos de personal del último trimestre»</em> y obtener información que antes solo era accesible si alguien buscaba el archivo exacto.</p><aside class="caja-ideas-clave" role="note" aria-label="Ideas clave"><p class="caja-ideas-clave-titulo">Ideas clave</p><ul><li>Revisa los permisos de tus carpetas y evita guardar documentos sensibles en ubicaciones abiertas para el resto del equipo.</li><li>Verifica que los enlaces compartidos tengan fecha de caducidad y utiliza las etiquetas de confidencialidad de tu organización.</li><li>Consulta antes de crear agentes y reporta inmediatamente cualquier documento que aparezca expuesto por un error de permisos.</li></ul></aside><h4>Qué se hace con esto</h4><ul><li><strong>Revisar los permisos de los datos sensibles.</strong> No guardes nóminas, datos de clientes, precios o contratos en carpetas abiertas por comodidad.</li><li><strong>Verificar los enlaces compartidos.</strong> Asegúrate de que lo que compartiste "temporalmente" tenga una fecha de caducidad o esté cerrado.</li><li><strong>Usar las etiquetas de confidencialidad</strong> de la organización: estas marcan el documento y se mantienen durante su uso.</li><li><strong>Consultar antes de crear un agente.</strong> Un agente hereda los permisos de las fuentes conectadas. Si le das acceso a una carpeta abierta, el agente mostrará esa información a cualquier usuario.</li><li><strong>Identificar a quién avisar.</strong> Un documento expuesto no es un problema técnico: es un incidente que debe comunicarse (Nodo 19).</li></ul><h4>Y de nuevo el shadow AI</h4><p>La sobreexposición es un problema interno, pero comparte origen con el <em>shadow AI</em>: <strong>información que circula más de lo previsto</strong>. En ambos casos, la regla es la misma: antes de pegar, subir o compartir contenido, piensa si esa información debería estar disponible para quien la reciba.</p><blockquote><p><strong>Aviso:</strong> Copilot no decide qué mostrar. El sistema reproduce lo que los permisos permiten. Si aparece información que no deberías ver, el problema es el permiso y no el asistente. Debes reportarlo.</p></blockquote></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

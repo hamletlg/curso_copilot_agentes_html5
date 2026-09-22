@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251T5PMSL">
+<html lang="es" id="exe-20260922113957T5PMSL">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -64,11 +64,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251T5PMSL" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957T5PMSL" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -121,25 +136,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251T5PMSL" class="page"> 
+</nav><main id="20260922113957T5PMSL" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">7. Los 5 componentes del agente</h1></div>
-</header><div id="page-content-20260913145251T5PMSL" class="page-content">
-<article id="20260913145251ZSJS0M" class="box no-header">
+</header><div id="page-content-20260922113957T5PMSL" class="page-content">
+<article id="20260922113957ZSJS0M" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251FO6WE4" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251FO6WE4&quot;}">
+<div id="20260922113957FO6WE4" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957FO6WE4&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><img src="../content/resources/diagrama_5_componentes.png" alt="Diagrama: en el centro el agente de IA y, a su alrededor, numerados, sus cinco componentes — percepción, razonamiento, herramientas, memoria y comunicación" width="640" height="512" style="display:block;margin:0 auto;"><p>Todo agente de IA en Microsoft 365 tiene cinco partes que trabajan juntas. Piensa en ellas como las habilidades de un buen asistente. Haz clic en cada componente para descubrirlo.</p>
-<div class="exe-fx exe-accordion"><div id="exe-accordion-0"><div class="fx-accordion-section"><a class="fx-accordion-title fx-accordion-title-0 fx-C1" href="#exe-accordion-0-0" id="exe_accordion_0-0-trigger"><h2>Sección 1: Percepción — Recibir la información</h2></a><div class="fx-accordion-content" id="exe-accordion-0-0"><p>Copilot recibe tu instrucción en lenguaje natural y, además, atiende al contexto en el que trabajas: los correos, los archivos, los participantes de una reunión de Teams o los datos de una hoja de Excel a los que tiene acceso. Cuanto más rico es ese contexto, mejor entiende lo que necesitas.</p></div><a class="fx-accordion-title fx-accordion-title-1 fx-C1" href="#exe-accordion-0-1" id="exe_accordion_0-1-trigger"><h2>Sección 2: Razonamiento — Pensar y planificar</h2></a><div class="fx-accordion-content" id="exe-accordion-0-1"><p>Copilot analiza tu objetivo, decide qué pasos necesita dar y en qué orden. Si le pides que prepare un informe, primero pensará: necesito los datos de Excel, después los organizaré, luego lo escribiré en Word.</p></div><a class="fx-accordion-title fx-accordion-title-2 fx-C1" href="#exe-accordion-0-2" id="exe_accordion_0-2-trigger"><h2>Sección 3: Herramientas — Tener manos para actuar</h2></a><div class="fx-accordion-content" id="exe-accordion-0-2"><p>Copilot usa las herramientas de Microsoft 365: puede acceder a tu correo (Outlook), consultar tus archivos (SharePoint, OneDrive), consultar bases de datos (Excel), buscar en internet, generar gráficos o interactuar con cualquier aplicación conectada. Sin herramientas, un agente solo puede conversar; con ellas, puede actuar.</p></div><a class="fx-accordion-title fx-accordion-title-3 fx-C1" href="#exe-accordion-0-3" id="exe_accordion_0-3-trigger"><h2>Sección 4: Memoria — Mantener el hilo y el conocimiento</h2></a><div class="fx-accordion-content" id="exe-accordion-0-3"><p>Copilot conserva el hilo de la conversación durante la sesión, de modo que no tienes que repetirle el contexto en cada mensaje. En los agentes, la memoria se amplía con las fuentes de conocimiento conectadas: el agente consulta los documentos y los datos de la organización que le hayas autorizado.</p></div><a class="fx-accordion-title fx-accordion-title-4 fx-C1" href="#exe-accordion-0-4" id="exe_accordion_0-4-trigger"><h2>Sección 5: Comunicación — Hablar y entregar resultados</h2></a><div class="fx-accordion-content" id="exe-accordion-0-4"><p>Copilot te informa de lo que ha hecho, te muestra el resultado y puede preguntar si necesitas ajustes. Los resultados aparecen directamente en las apps que ya usas: un texto en Word, un gráfico en Excel, un resumen en Teams.</p></div></div></div></div></div>
+      <div class="exe-text"><img src="../content/resources/diagrama_5_componentes.png" alt="Diagrama: en el centro el agente de IA y, a su alrededor, numerados, sus cinco componentes — percepción, razonamiento, herramientas, memoria y comunicación" width="640" height="512" style="display:block;margin:0 auto;"><p>Los agentes de IA en Microsoft 365 se componen de cinco partes que funcionan de manera coordinada. Haz clic en cada componente para conocer su función.</p>
+<div class="exe-fx exe-accordion"><div id="exe-accordion-0"><div class="fx-accordion-section"><a class="fx-accordion-title fx-accordion-title-0 fx-C1" href="#exe-accordion-0-0" id="exe_accordion_0-0-trigger"><h2>Sección 1: Percepción — Recibir la información</h2></a><div class="fx-accordion-content" id="exe-accordion-0-0"><p>Copilot procesa tu instrucción en lenguaje natural y analiza el contexto de tu trabajo. Esto incluye los correos, archivos, participantes de una reunión de Teams o datos en una hoja de Excel a los que tiene acceso. La precisión de la respuesta depende de la cantidad de información contextual disponible.</p></div><a class="fx-accordion-title fx-accordion-title-1 fx-C1" href="#exe-accordion-0-1" id="exe_accordion_0-1-trigger"><h2>Sección 2: Razonamiento — Pensar y planificar</h2></a><div class="fx-accordion-content" id="exe-accordion-0-1"><p>Copilot analiza tu objetivo para determinar los pasos necesarios y su orden de ejecución. Por ejemplo, si pides preparar un informe, el sistema identifica primero la necesidad de extraer datos de Excel, luego los organiza y finalmente los redacta en Word.</p></div><a class="fx-accordion-title fx-accordion-title-2 fx-C1" href="#exe-accordion-0-2" id="exe_accordion_0-2-trigger"><h2>Sección 3: Herramientas — Tener manos para actuar</h2></a><div class="fx-accordion-content" id="exe-accordion-0-2"><p>Copilot utiliza las herramientas de Microsoft 365. Puede acceder a tu correo (Outlook), consultar archivos en SharePoint y OneDrive, consultar bases de datos en Excel, buscar en internet, generar gráficos o interactuar con aplicaciones conectadas. La capacidad de ejecución del agente depende de estas integraciones.</p></div><a class="fx-accordion-title fx-accordion-title-3 fx-C1" href="#exe-accordion-0-3" id="exe_accordion_0-3-trigger"><h2>Sección 4: Memoria — Mantener el hilo y el conocimiento</h2></a><div class="fx-accordion-content" id="exe-accordion-0-3"><p>Copilot mantiene la información de la conversación durante la sesión para evitar que repitas el contexto en cada mensaje. En los agentes, esta capacidad se amplía mediante las fuentes de conocimiento conectadas. El sistema consulta los documentos y los datos de la organización que hayas autorizado.</p></div><a class="fx-accordion-title fx-accordion-title-4 fx-C1" href="#exe-accordion-0-4" id="exe_accordion_0-4-trigger"><h2>Sección 5: Comunicación — Hablar y entregar resultados</h2></a><div class="fx-accordion-content" id="exe-accordion-0-4"><p>Copilot muestra las acciones realizadas y el resultado obtenido, permitiéndote solicitar ajustes. Los resultados se integran en las aplicaciones que utilizas habitualmente, como un texto en Word, un gráfico en Excel o un resumen en Teams.</p></div></div></div></div></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

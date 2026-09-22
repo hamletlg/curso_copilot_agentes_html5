@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251HVXK67">
+<html lang="es" id="exe-20260922113957HVXK67">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251HVXK67" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957HVXK67" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251HVXK67" class="page"> 
+</nav><main id="20260922113957HVXK67" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">4. Qué puede y qué no puede hacer la IA</h1></div>
-</header><div id="page-content-20260913145251HVXK67" class="page-content">
-<article id="20260913145251NXL2CS" class="box no-header">
+</header><div id="page-content-20260922113957HVXK67" class="page-content">
+<article id="20260922113957NXL2CS" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251CEN6QG" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251CEN6QG&quot;}">
+<div id="20260922113957CEN6QG" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957CEN6QG&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><h4>Lo que la IA hace bien y lo que no</h4><p>La pregunta útil no es "¿es fiable la IA?", sino "<strong>¿es fiable para esta tarea concreta?</strong>". Estas seis filas resumen la experiencia de miles de oficinas:</p><p><strong>Tabla de capacidades:</strong></p><table class="exe-table"><thead><tr><th>Tarea</th><th>¿Buena idea con IA?</th><th>Por qué</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td>Redactar un borrador, resumir, reescribir, traducir</td><td><strong>Sí</strong>, y revisar después</td><td>El texto se ajusta en un minuto; el coste de un error es bajo</td></tr><tr><td>Clasificar y ordenar información</td><td><strong>Sí</strong>, con categorías claras</td><td>Funciona bien si las reglas están definidas de antemano</td></tr><tr><td>Buscar "¿qué tenemos sobre esto?" en tus documentos</td><td><strong>Sí</strong></td><td>Copilot de Trabajo busca sobre los datos a los que ya tienes permiso</td></tr><tr><td>Aritmética, cuadres de cuentas, totales</td><td><strong>No sin verificar</strong></td><td>Puede calcular mal y escribir la cifra con la misma seguridad que una correcta</td></tr><tr><td>Datos legales, fiscales, laborales o de nómina</td><td><strong>No</strong></td><td>Hace falta la fuente oficial y el criterio de un profesional</td></tr><tr><td>Decidir sobre una persona (contratar, sancionar, evaluar)</td><td><strong>No</strong></td><td>La decisión tiene que tomarla y firmarla una persona</td></tr></tbody></table><h4>Tres reglas que no se negocian</h4><ol><li><strong>La IA propone, tú decides.</strong> Nada que salga del asistente se envía, se firma o se publica sin que una persona lo haya leído.</li><li><strong>Todo dato con consecuencias se verifica en la fuente.</strong> Si la cifra va a acabar en una nómina, una declaración o un contrato, se comprueba en el sistema del que sale, no en el resumen.</li><li><strong>Si no sabrías explicarlo sin la IA, no lo uses.</strong> Del trabajo asistido se sale sabiendo qué pone y por qué; del trabajo delegado, no.</li></ol><h4>Cuándo NO usar IA (aunque puedas)</h4><ul><li>Cuando el dato es <strong>confidencial</strong> y la herramienta no está autorizada por tu empresa.</li><li>Cuando la tarea exige <strong>fuente oficial</strong>: normativa, plazos legales, obligaciones fiscales.</li><li>Cuando el resultado afecta a <strong>una persona</strong> y nadie va a revisarlo.</li><li>Cuando <strong>tú mismo</strong> puedes hacerlo en menos tiempo del que tardarás en comprobar la respuesta.</li></ul>
-<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> La IA no distingue entre "hacer un borrador" y "decidir un despido": los dos son texto para ella. Distinguirlo es <strong>tu</strong> trabajo, y es justo lo que la ley espera que sepas hacer.</p></blockquote></div>
+      <div class="exe-text"><h4>Lo que la IA hace bien y lo que no</h4><p>Más que preguntarse si la IA es fiable, es útil determinar si es fiable para una tarea concreta. Las siguientes filas resumen la experiencia de miles de oficinas:</p><p><strong>Tabla de capacidades:</strong></p><table class="exe-table"><thead><tr><th>Tarea</th><th>¿Buena idea con IA?</th><th>Por qué</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td>Redactar un borrador, resumir, reescribir, traducir</td><td><strong>Sí</strong>, con revisión posterior</td><td>El texto se genera rápido y el coste de un error es bajo</td></tr><tr><td>Clasificar y ordenar información</td><td><strong>Sí</strong>, con categorías claras</td><td>Funciona bien cuando las reglas están definidas de antemano</td></tr><tr><td>Buscar "¿qué tenemos sobre esto?" en tus documentos</td><td><strong>Sí</strong></td><td>Copilot de Trabajo consulta los datos a los que tienes permiso</td></tr><tr><td>Aritmética, cuadres de cuentas, totales</td><td><strong>No sin verificar</strong></td><td>Puede dar un resultado erróneo y mostrarlo con la misma seguridad que una cifra correcta</td></tr><tr><td>Datos legales, fiscales, laborales o de nómina</td><td><strong>No</strong></td><td>Se requiere la fuente oficial y el criterio de un profesional</td></tr><tr><td>Decidir sobre una persona (contratar, sancionar, evaluar)</td><td><strong>No</strong></td><td>Una persona debe tomar y firmar la decisión</td></tr></tbody></table><h4>Tres reglas que no se negocian</h4><ol><li><strong>La IA propone, tú decides.</strong> Nada que genere el asistente se envía, se firma o se publica sin que una persona lo revise antes.</li><li><strong>Todo dato con consecuencias se verifica en la fuente.</strong> Si la cifra va a una nómina, una declaración o un contrato, compruébala en el sistema de origen y no en el resumen.</li><li><strong>Si no sabrías explicarlo sin la IA, no lo uses.</strong> En el trabajo asistido sabes qué pone el texto y por qué; en el trabajo delegado, no.</li></ol><h4>Cuándo NO usar IA (aunque puedas)</h4><ul><li>Cuando el dato es <strong>confidencial</strong> y la herramienta no está autorizada por tu empresa.</li><li>Cuando la tarea exige <strong>fuentes oficiales</strong>: normativa, plazos legales u obligaciones fiscales.</li><li>Cuando el resultado afecta a <strong>una persona</strong> y nadie va a revisarlo.</li><li>Cuando <strong>tú mismo</strong> puedes hacerlo en menos tiempo del que tardarías en comprobar la respuesta.</li></ul>
+<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> La IA no diferencia entre "hacer un borrador" y "decidir un despido": para ella, ambos son texto. Distinguirlos es tu trabajo y es lo que la ley espera que hagas.</p></blockquote></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

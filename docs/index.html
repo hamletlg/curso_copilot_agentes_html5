@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#2026091314525126G42E" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#2026092211395726G42E" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li class="active"> <a href="index.html" class="active main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="2026091314525126G42E" class="page"> 
+</nav><main id="2026092211395726G42E" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title sr-av">1. PORTADA</h1></div>
-</header><div id="page-content-2026091314525126G42E" class="page-content">
-<article id="20260913145251JOIGOP" class="box no-header">
+</header><div id="page-content-2026092211395726G42E" class="page-content">
+<article id="20260922113957JOIGOP" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251DEV85C" class="idevice_node text" data-idevice-path="idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251DEV85C&quot;}">
+<div id="20260922113957DEV85C" class="idevice_node text" data-idevice-path="idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957DEV85C&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
       <div class="exe-text"><div class="portada"><img src="content/resources/portada_curso_copilot.jpg" alt="Vista aérea de un escritorio de trabajo moderno con un portátil, un teléfono móvil, un cuaderno y una lámpara, con espacio libre"><div class="portada-texto"><h2 class="portada-titulo">Agentes de IA y Microsoft Copilot para tu día a día<br><br></h2><p class="portada-subtitulo">Cómo entenderlos, usarlos y sacarles el máximo provecho en tu trabajo con Microsoft 365<br><br></p><div class="portada-datos"><p><strong>Duración:</strong> 2 horas · <strong>Nivel:</strong> Introductorio</p></div></div></div>
-<p>Un recorrido práctico de 2 horas para comprender qué son los agentes de IA, cómo funcionan y cómo puedes usarlos en tu trabajo diario. Sin conocimientos técnicos previos necesarios.</p></div>
+<p>Un recorrido práctico de 2 horas para entender qué son los agentes de IA, cómo funcionan y cómo puedes usarlos en tu trabajo diario. No hacen falta conocimientos técnicos previos.</p></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

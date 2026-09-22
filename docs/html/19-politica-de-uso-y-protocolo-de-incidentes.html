@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251XY9UMI">
+<html lang="es" id="exe-20260922113957XY9UMI">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251XY9UMI" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957XY9UMI" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251XY9UMI" class="page"> 
+</nav><main id="20260922113957XY9UMI" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">19. Política de uso y protocolo de incidentes</h1></div>
-</header><div id="page-content-20260913145251XY9UMI" class="page-content">
-<article id="20260913145251KVVAJJ" class="box no-header">
+</header><div id="page-content-20260922113957XY9UMI" class="page-content">
+<article id="20260922113957KVVAJJ" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="202609131452519O126K" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;202609131452519O126K&quot;}">
+<div id="202609221139579O126K" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;202609221139579O126K&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><h4>De los consejos a las reglas</h4><p>Todo lo anterior funciona si la empresa escribe <strong>qué se puede hacer y qué no</strong>. Una política de uso de IA no es un documento jurídico: es una página que responde a cinco preguntas.</p><ul><li><strong>Qué herramientas están autorizadas</strong> y para qué (y qué hacer si necesitas una que no lo está).</li><li><strong>Qué datos se pueden usar</strong> en cada herramienta, con la clasificación de la tabla siguiente.</li><li><strong>Quién revisa</strong> lo que la IA produce antes de que salga de la empresa o llegue a alguien de fuera.</li><li><strong>Quién autoriza</strong> crear un agente, conectarlo a una fuente de datos y publicarlo para el equipo.</li><li><strong>Qué hacer si algo sale mal</strong> (el protocolo de incidentes).</li></ul><h4>Clasificación de datos (para el prompt)</h4><p><strong>Tabla de datos:</strong></p><table class="exe-table"><thead><tr><th>Nivel</th><th>Ejemplos</th><th>¿Se puede escribir en un asistente de la empresa?</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td><strong>Público</strong></td><td>Notas de prensa, información ya publicada, catálogos abiertos</td><td>Sí</td></tr><tr><td><strong>Interno</strong></td><td>Procesos, manuales, borradores sin datos de terceros</td><td>Sí, con las herramientas autorizadas</td></tr><tr><td><strong>Confidencial</strong></td><td>Datos de clientes, precios, contratos, información financiera</td><td>Sí, solo en Copilot de Trabajo y solo si tu trabajo lo requiere</td></tr><tr><td><strong>Especialmente protegido</strong></td><td>Salud, datos de menores, religión, ideología, sindicación, datos biométricos</td><td><strong>No</strong>. Requiere base jurídica específica y autorización expresa</td></tr></tbody></table><p>Regla de bolsillo: <strong>si dudas, pregúntate si eso mismo lo enviarías por correo a alguien de fuera de la empresa. Si la respuesta es no, no lo escribas en el prompt.</strong></p><h4>El protocolo de incidentes</h4><p>Que algo salga mal es cuestión de tiempo: un borrador con datos de más, un agente que responde sobre un documento que no le tocaba, un compañero que pegó una tabla en una web no autorizada. Lo que se evalúa no es que ocurra, sino <strong>qué se hace después</strong>.</p><p><strong>Pasos del protocolo:</strong></p><ol><li><strong>Detener.</strong> Deja de usar el resultado o la herramienta y no lo compartas.</li><li><strong>No borrar.</strong> Guarda lo que ha pasado: qué herramienta, qué datos, cuándo y quién lo vio.</li><li><strong>Avisar.</strong> Comunica el incidente por el canal que tenga la empresa (tu responsable o la persona de protección de datos).</li><li><strong>Corregir lo que se pueda.</strong> Retirar el documento compartido, corregir el permiso, retirar el agente.</li><li><strong>Anotarlo.</strong> Un incidente sin registro se repite; el registro también es prueba de que la organización actúa con diligencia.</li></ol><h4>Lo que nunca hace falta autorizar</h4><ul><li>Pegar datos personales de clientes o de compañeros en una herramienta no autorizada.</li><li>Usar IA para redactar una decisión que afecta a una persona sin revisión humana.</li><li>Conectar un agente a sistemas de nómina, facturación o expedientes sin autorización escrita.</li><li>Publicar un agente para toda la organización sin que nadie de TI o de dirección lo haya revisado.</li></ul>
-<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> La política no sustituye a la formación: la cierra. Si tu organización todavía no la tiene, esta página es la lista de lo que debe contener, y el Anexo del curso incluye una plantilla para redactarla.</p></blockquote></div>
+      <div class="exe-text"><h4>De los consejos a las reglas</h4><p>Para que las pautas anteriores sean efectivas, la empresa debe definir qué acciones están permitidas y cuáles no. Una política de uso de IA no es un documento legal complejo, sino una guía que responde a cinco preguntas:</p><ul><li><strong>Qué herramientas están autorizadas</strong> y para qué (y qué hacer si necesitas una que no lo está).</li><li><strong>Qué datos se pueden usar</strong> en cada herramienta, siguiendo la clasificación de la tabla siguiente.</li><li><strong>Quién revisa</strong> lo que la IA produce antes de que salga de la empresa o llegue a un tercero.</li><li><strong>Quién autoriza</strong> crear un agente, conectarlo a una fuente de datos y publicarlo para el equipo.</li><li><strong>Qué hacer si algo sale mal</strong> (el protocolo de incidentes).</li></ul><h4>Clasificación de datos (para el prompt)</h4><p><strong>Tabla de datos:</strong></p><table class="exe-table"><thead><tr><th>Nivel</th><th>Ejemplos</th><th>¿Se puede escribir en un asistente de la empresa?</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td><strong>Público</strong></td><td>Notas de prensa, información ya publicada, catálogos abiertos</td><td>Sí</td></tr><tr><td><strong>Interno</strong></td><td>Procesos, manuales, borradores sin datos de terceros</td><td>Sí, con las herramientas autorizadas</td></tr><tr><td><strong>Confidencial</strong></td><td>Datos de clientes, precios, contratos, información financiera</td><td>Sí, solo en Copilot de Trabajo y solo si tu trabajo lo requiere</td></tr><tr><td><strong>Especialmente protegido</strong></td><td>Salud, datos de menores, religión, ideología, sindicación, datos biométricos</td><td><strong>No</strong>. Requiere base jurídica específica y autorización expresa</td></tr></tbody></table><p>Regla práctica: <strong>si tienes dudas, analiza si enviarías esa información por correo a alguien fuera de la empresa. Si la respuesta es no, no la incluyas en el prompt.</strong></p><aside class="caja-ideas-clave" role="note" aria-label="Ideas clave"><p class="caja-ideas-clave-titulo">Ideas clave</p><ul><li>Analiza si enviarías la información por correo fuera de la empresa antes de incluirla en un prompt de IA.</li><li>Usa únicamente las herramientas autorizadas para tratar datos internos o confidenciales según la clasificación de la empresa.</li><li>Avisa a tu responsable y sigue el protocolo de incidentes si detectas algún fallo en el uso de la IA.</li><li>Pide revisión humana antes de aplicar decisiones que afecten a personas o de publicar agentes para toda la organización.</li></ul></aside><h4>El protocolo de incidentes</h4><p>Los fallos en el uso de estas herramientas pueden ocurrir. Algunos ejemplos son un borrador con datos excesivos, un agente que accede a documentos no autorizados o la publicación de una tabla en una web externa. El objetivo no es evitar el error a toda costa, sino saber cómo actuar cuando ocurre.</p><p><strong>Pasos del protocolo:</strong></p><ol><li><strong>Detener.</strong> Deja de usar el resultado o la herramienta y no lo compartas.</li><li><strong>No borrar.</strong> Guarda los detalles de lo ocurrido: qué herramienta se usó, qué datos se trataron, cuándo ocurrió y quién lo vio.</li><li><strong>Avisar.</strong> Comunica el incidente por el canal que tenga la empresa (tu responsable o la persona de protección de datos).</li><li><strong>Corregir lo que se pueda.</strong> Retira el documento compartido, ajusta el permiso o elimina el agente.</li><li><strong>Anotarlo.</strong> Un incidente sin registro puede repetirse; el registro sirve como prueba de que la organización actúa con diligencia.</li></ol><h4>Lo que nunca hace falta autorizar</h4><ul><li>Introducir datos personales de clientes o de compañeros en una herramienta no autorizada.</li><li>Utilizar la IA para redactar decisiones que afecten a personas sin una revisión humana previa.</li><li>Conectar agentes a sistemas de nómina, facturación o expedientes sin una autorización por escrito.</li><li>Publicar un agente para toda la organización sin la revisión previa del departamento de TI o de la dirección.</li></ul>
+<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Nota:</strong> La política no sustituye a la formación, sino que la complementa. Si tu organización aún no cuenta con una, este apartado detalla los puntos que debe incluir. El anexo del curso aporta una plantilla para su redacción.</p></blockquote></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

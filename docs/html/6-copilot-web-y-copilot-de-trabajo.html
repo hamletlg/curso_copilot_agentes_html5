@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251B3FNKD">
+<html lang="es" id="exe-20260922113957B3FNKD">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251B3FNKD" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957B3FNKD" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251B3FNKD" class="page"> 
+</nav><main id="20260922113957B3FNKD" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">6. Copilot Web y Copilot de Trabajo</h1></div>
-</header><div id="page-content-20260913145251B3FNKD" class="page-content">
-<article id="20260913145251FD6OXS" class="box no-header">
+</header><div id="page-content-20260922113957B3FNKD" class="page-content">
+<article id="20260922113957FD6OXS" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="20260913145251QFLNDM" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260913145251QFLNDM&quot;}">
+<div id="20260922113957QFLNDM" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260922113957QFLNDM&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><p>Copilot no es una sola cosa: es el mismo asistente disponible en dos entornos distintos y conviene saber en cuál estás trabajando en cada momento.</p>
-<p><strong>Tabla de entornos:</strong></p><table class="exe-table"><thead><tr><th>Entorno</th><th>Nombre</th><th>¿Se conecta a los datos de tu organización?</th><th>¿Qué permite?</th></tr></thead><tbody><tr><td><strong>Web</strong></td><td>Copilot Web (o «Modo Web»)</td><td><strong>No</strong> — responde con información pública de la web y con lo que tú le aportas</td><td>Buscar en internet, redactar textos generales, resumir los documentos que tú subes</td></tr><tr><td><strong>Trabajo</strong></td><td>Copilot de Trabajo (Microsoft 365 Copilot)</td><td><strong>Sí</strong> — accede a tus correos, archivos, reuniones y chats a través de Microsoft Graph</td><td>Todo lo del entorno web + integración en Word, Excel, PowerPoint, Outlook, Teams y SharePoint + agentes especializados y avanzados</td></tr></tbody></table><p><strong>La clave:</strong> el entorno de trabajo es el que conoce tu organización. Solo él puede apoyarse en los datos internos y, por eso, es también en el que se aplican las políticas de seguridad y de gobernanza de tu empresa.</p></div>
+      <div class="exe-text"><p>Copilot funciona en dos entornos distintos. Es necesario identificar en cuál estás trabajando según la tarea que realices.</p>
+<p><strong>Tabla de entornos:</strong></p><table class="exe-table"><thead><tr><th>Entorno</th><th>Nombre</th><th>¿Se conecta a los datos de tu organización?</th><th>¿Qué permite?</th></tr></thead><tbody><tr><td><strong>Web</strong></td><td>Copilot Web (o «Modo Web»)</td><td><strong>No</strong>. Responde con información pública de la web y con los datos que aportes</td><td>Buscar en internet, redactar textos generales y resumir los documentos que subas</td></tr><tr><td><strong>Trabajo</strong></td><td>Copilot de Trabajo (Microsoft 365 Copilot)</td><td><strong>Sí</strong>. Accede a tus correos, archivos, reuniones y chats a través de Microsoft Graph</td><td>Funciones del entorno web, integración en Word, Excel, PowerPoint, Outlook, Teams y SharePoint y agentes especializados</td></tr></tbody></table><p><strong>La clave:</strong> El entorno de trabajo tiene acceso a los datos de tu organización. Esto permite que el sistema utilice información interna y garantiza que se cumplan las políticas de seguridad y de gobernanza de la empresa.</p></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>

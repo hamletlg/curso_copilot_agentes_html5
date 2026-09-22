@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="exe-20260913145251PD52GY">
+<html lang="es" id="exe-20260922113957PD52GY">
 <head>
 <meta charset="utf-8">
 <meta name="generator" content="eXeLearning">
@@ -62,11 +62,26 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>
 </head>
 <body class="exe-export exe-web-site">
 <script>document.body.className+=" js"</script>
-<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260913145251PD52GY" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260922113957PD52GY" id="skipNav">Saltar al contenido</a> <nav id="siteNav">
 <ul>
 <li> <a href="../index.html" class="main-node no-ch">1. PORTADA</a>
 </li>
@@ -119,25 +134,26 @@ body.exe-export .portada{container-type:inline-size}
 <li> <a href="../html/25-resumen-y-glosario.html" class="no-ch">25. RESUMEN Y GLOSARIO</a>
 </li>
 </ul>
-</nav><main id="20260913145251PD52GY" class="page"> 
+</nav><main id="20260922113957PD52GY" class="page"> 
 <header class="main-header">
 <div class="package-header"><p class="package-title">Agentes de IA y Microsoft Copilot para tu día a día</p></div>
 <div class="page-header"><h1 class="page-title">5. ¿Qué es un agente de IA?</h1></div>
-</header><div id="page-content-20260913145251PD52GY" class="page-content">
-<article id="20260913145251YI8US4" class="box no-header">
+</header><div id="page-content-20260922113957PD52GY" class="page-content">
+<article id="20260922113957YI8US4" class="box no-header">
 <header class="box-head no-icon">
 <button class="box-toggle box-toggle-on" title="Toggle content">
 <span>Toggle content</span>
 </button></header>
 <div class="box-content">
-<div id="202609131452514YIVEY" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;202609131452514YIVEY&quot;}">
+<div id="202609221139574YIVEY" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;202609221139574YIVEY&quot;}">
 <div class="exe-text-template"><div class="textIdeviceContent">
   <div class="exe-text-activity">
     <div>
-      <div class="exe-text"><p>Imagina esto:</p><p>Le dices a Copilot de Trabajo: <em>"Prepara un resumen de las reuniones que tuve esta semana con el equipo de ventas y envía un correo con los puntos clave a los asistentes."</em></p><p>Un chatbot estándar —como Copilot Web— te devolvería un texto que después tendrías que llevar tú al calendario, a Teams y a Outlook. <strong>Copilot de Trabajo</strong> hace algo más: consulta tu calendario, lee los resúmenes de las reuniones de Teams, redacta el resumen y envía el correo, todo dentro del entorno seguro de tu organización.</p>
-<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Definición clave:</strong> Un agente de IA en Microsoft 365 es un asistente que no se limita a generar respuestas: PLANIFICA ACCIONES y las EJECUTA con las herramientas conectadas a tu ecosistema Microsoft.</p></blockquote><p>La diferencia entre un chatbot y un agente no está en lo que sabe, sino en lo que puede hacer. En Microsoft 365 conviven tres niveles:</p><ul><li><strong>Nivel 1 — Copilot Asistente (chatbot estándar).</strong> Es conversacional y reactivo: espera tu instrucción, responde y se detiene. Responde preguntas generales, redacta textos o resume el documento que tú le entregas, pero no actúa por su cuenta ni toca tus sistemas.</li><li><strong>Nivel 2 — Agentes especializados (o declarativos).</strong> Tienen un rol concreto y una base de conocimiento acotada: por ejemplo, un agente de Recursos Humanos que responde sobre las políticas de la empresa a partir de los documentos de SharePoint.</li><li><strong>Nivel 3 — Agentes avanzados (agentes de Copilot Studio).</strong> Son proactivos: no esperan a que les preguntes. Ejecutan acciones, se conectan a servicios y API externos y automatizan flujos completos a partir de disparadores (triggers).</li></ul><p>Y una idea que conviene retener: un mismo asistente puede comportarse como chatbot o como agente según el entorno y las herramientas que tenga habilitadas. En una frase, un agente de IA es un asistente digital que entiende un objetivo, decide qué pasos necesita dar, usa las herramientas de tu entorno (correo, calendario, documentos, Teams) y te devuelve un resultado completo.</p></div>
+      <div class="exe-text"><p>Considera el siguiente caso.</p><p>Pides a Copilot de Trabajo que prepare un resumen de las reuniones de esta semana con el equipo de ventas y envíe un correo con los puntos clave a los asistentes. Un chatbot estándar, como Copilot Web, generaría un texto que tendrías que copiar manualmente en el calendario, Teams y Outlook. <strong>Copilot de Trabajo</strong> realiza acciones adicionales: consulta tu calendario, lee los resúmenes de las reuniones de Teams, redacta el texto y envía el correo dentro del entorno seguro de tu organización.</p>
+<p><img src="../content/resources/icono_nota.png" alt="Nota" width="32" height="32"></p><blockquote><p><strong>Definición clave:</strong> Un agente de IA en Microsoft 365 es un asistente que planifica acciones y las ejecuta con las herramientas conectadas a tu ecosistema Microsoft.</p></blockquote><p>La diferencia entre un chatbot y un agente reside en sus capacidades de ejecución. En Microsoft 365 conviven tres niveles:</p><aside class="caja-ideas-clave" role="note" aria-label="Ideas clave"><p class="caja-ideas-clave-titulo">Ideas clave</p><ul><li>Identifica la diferencia entre un chatbot y un agente por su capacidad para ejecutar acciones en lugar de solo generar texto.</li><li>Utiliza agentes de IA para automatizar flujos de trabajo que requieran interactuar con diversas herramientas de tu entorno laboral.</li><li>Elige el nivel de agente adecuado según necesites una respuesta conversacional simple o una ejecución proactiva de tareas.</li></ul></aside><ul><li><strong>Nivel 1. Copilot Asistente (chatbot estándar)</strong> Es una herramienta conversacional y reactiva. Espera tu instrucción, responde y finaliza la tarea. Responde preguntas generales, redacta textos o resume documentos que tú le facilitas, pero no actúa por cuenta propia ni accede a tus sistemas.</li><li><strong>Nivel 2. Agentes especializados (o declarativos)</strong> Tienen un rol concreto y una base de conocimiento delimitada. Por ejemplo, un agente de Recursos Humanos puede responder sobre las políticas de la empresa basándose en los documentos de SharePoint.</li><li><strong>Nivel 3. Agentes avanzados (agentes de Copilot Studio)</strong> Son proactivos. Ejecutan acciones, se conectan a servicios y API externos y automatizan flujos completos a partir de disparadores (triggers) sin esperar una pregunta directa.</li></ul><p>Un mismo asistente puede funcionar como chatbot o como agente dependiendo del entorno y las herramientas habilitadas. Un agente de IA es un asistente digital que procesa un objetivo, determina los pasos necesarios, utiliza las herramientas de tu entorno (correo, calendario, documentos, Teams) y entrega un resultado final.</p></div>
     </div>
     <p class="clearfix"></p>
+    
   </div>
 </div></div>
 </div>
