@@ -168,6 +168,10 @@ with zipfile.ZipFile(ELPX) as z:
     check("textos alternativos en las imagenes", n_alt >= N_IMAGENES + 1, f"{n_alt}")
 
     check("credito de portada (ultima pagina)", "Jakub Zerdzicki" in xml)
+    # la portada y la ficha del curso tienen que decir la misma duración (la del curso: 3,5 horas)
+    check("portada: duracion coherente con la ficha del curso",
+          "3,5 horas" in xml and "2 horas" not in xml,
+          "la portada no dice 3,5 horas" if "2 horas" in xml or "3,5 horas" not in xml else "")
     check("enlaces externos con target", xml.count('target="_blank"') >= 3)
 
     # cuestionario: descifrar el estado y comprobar los requisitos del guion. Desde la revisión VII

@@ -20,7 +20,11 @@
 >    nativos e interactivos (dos Test de práctica **no evaluativos** y dos respuestas abiertas con
 >    el botón de retroalimentación del iDevice Texto). La evaluación final sigue siendo el
 >    cuestionario de 20 preguntas con su puntuación y su aviso al LMS.
-> 4. Registro de la decisión de fondo (formato intermedio guion → IR en JSON): ver
+> 4. **Corregida la duración de la portada**: decía «2 horas» cuando el curso son 3,5 horas (la
+>    ficha del curso y la portada llevaban diciendo cosas distintas desde la revisión VI). El
+>    verificador del paquete comprueba ahora que coincidan; el maestro se sincroniza con
+>    `herramientas/revision_vii.py`.
+> 5. Registro de la decisión de fondo (formato intermedio guion → IR en JSON): ver
 >    `PROPUESTA_formato_intermedio.md`. Se aborda en la **revisión VIII**.
 
 > **Revisión del 13-sep-2026 (VI) — remediación de cumplimiento (Art. 4 del AI Act):**
@@ -161,7 +165,7 @@ Cada entrada del guion sigue esta estructura:
 |-------|---------|
 | **iDevice(s)** | Texto (título) + Texto (subtítulo) + Texto (introducción) |
 | **Recurso gráfico** | **`recursos/imagenes/portada_curso_copilot.jpg`** (1920×1281, 279 KB) — imagen de cabecera de la portada. Texto alternativo: «Vista aérea de un escritorio de trabajo moderno con un portátil, un teléfono móvil, un cuaderno y una lámpara, con espacio libre». Si el tema no ofrece bloque de cabecera, insertarla al inicio del texto. **Crédito:** *Jakub Zerdzicki / Pexels* — atribución NO obligatoria (licencia Pexels); ficha completa en `recursos/imagenes/CREDITOS.md`. |
-| **Contenido en pantalla** | # Agentes de IA y Microsoft Copilot para tu día a día<br><br>## Cómo entenderlos, usarlos y sacarles el máximo provecho en tu trabajo con Microsoft 365<br><br>Un recorrido práctico de 2 horas para entender qué son los agentes de IA, cómo funcionan y cómo puedes usarlos en tu trabajo diario. No hacen falta conocimientos técnicos previos.<br><br>**Duración:** 2 horas · **Nivel:** Introductorio |
+| **Contenido en pantalla** | # Agentes de IA y Microsoft Copilot para tu día a día<br><br>## Cómo entenderlos, usarlos y sacarles el máximo provecho en tu trabajo con Microsoft 365<br><br>Un recorrido práctico de 3,5 horas para entender qué son los agentes de IA, cómo funcionan y cómo puedes usarlos en tu trabajo diario. No hacen falta conocimientos técnicos previos.<br><br>**Duración:** 3,5 horas · **Nivel:** Introductorio |
 | **Interacción** | El alumno lee y avanza con el botón «Siguiente» de eXeLearning (no existe un botón «Comenzar» propio: si se quiere ese texto, se cambia la etiqueta del botón en el tema). |
 | **Notas de producción** | Esta es la primera impresión del curso. Usar el bloque de imagen de cabecera de eXeLearning si está disponible. Si no, incluir una imagen al inicio del texto. Colores: azul corporativo (#2563EB) como primario, gris oscuro (#1E293B) para texto, blanco (#FFFFFF) para fondo. **Implementado así (revisión IV):** el título, el subtítulo y la línea «Duración · Nivel» van SUPERPUESTOS sobre la imagen (overlay) con degradado oscuro y sombra; la introducción va debajo. Si la columna de contenido es estrecha (<520 px), el texto pasa solo debajo de la imagen. Ver `00_LEEME_PRIMERO.md` §6 regla 12. |
 

@@ -22,7 +22,7 @@ decisión del autor sobre el maestro (§ «Riesgos») y la revisión VIII (forma
 | Punto de montaje | `componentes_de_nodo()` en `generar_curso_elpx.py:619` | 1 iDevice Texto por página, bloques sin titular |
 | Comprobación de fidelidad | `informe_fidelidad()` (`:860`) | verifica que el texto del guión aparece en el HTML |
 | Exportación | `herramientas/exportar.sh` (CLI del contenedor `exelearning`) | `.elpx` + SCORM 1.2 + HTML5 + vista previa |
-| Verificación sin navegador | `herramientas/verificar_paquete.py` | 80 comprobaciones |
+| Verificación sin navegador | `herramientas/verificar_paquete.py` | 87 comprobaciones |
 | Verificación real | `herramientas/pruebas_interaccion.py` (Chrome CDP 9222) | acordeón y cuestionario |
 | Paleta oficial | `legado_articulate/pautas_diseno/PAUTAS_DE_DISEÑO.md` | primario `#2563EB`, texto `#1E293B`, fondo 2º `#F8FAFC`, bordes `#E2E8F0` |
 
@@ -93,7 +93,7 @@ cliente del servidor, comparador). El guión original nunca se tocó hasta este 
 | 1. Reescritura | **25/25 nodos** con `gemma4-12b`, **54,6 min**, 20,6 tok/s, 0 errores. Marcas de IA en el detector: **52 → 21**; las 21 restantes se revisaron una a una y son marcado estructural o falsos positivos (ver `informe_reescritura.md`). Volcado al guion: 34 cambios, 0 saltos |
 | 2-3. Recuadros | **8 recuadros** (5, 10, 14, 17, 18, 19, 21, 22), 3-4 viñetas, sin datos nuevos. Posición medida **en el navegador** (nodo 19: 47 %; `verificar_recuadros.py` mide sobre el fichero y da 73-83 %, porque cuenta el marco de la página: para la posición real vale la medida del navegador) |
 | 4-5. Guión y CSS | Fila `**Recuadro de ideas clave**` documentada en §3; `<aside class="caja-ideas-clave" role="note">`; CSS `#2563EB` sobre `#F8FAFC` (contraste 13,98:1 y 4,94:1, AA) |
-| 6. Verificación | `verificar_paquete.py`: **86/86 OK**. `verificar_recuadros.py`: 8 recuadros correctos y CSS en los tres entregables. `pruebas_interaccion.py` en Chrome real: recuadro con su estilo aplicado (fondo y borde medidos por píxel) y respuesta modelo que se despliega. Capturas en `entregables/capturas/rev7/` |
+| 6. Verificación | `verificar_paquete.py`: **87/87 OK**. `verificar_recuadros.py`: 8 recuadros correctos y CSS en los tres entregables. `pruebas_interaccion.py` en Chrome real: recuadro con su estilo aplicado (fondo y borde medidos por píxel) y respuesta modelo que se despliega. Capturas en `entregables/capturas/rev7/` |
 
 ### Dos hallazgos de la verificación (los dos, arreglados)
 

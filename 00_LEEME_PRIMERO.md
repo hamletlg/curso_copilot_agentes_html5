@@ -10,7 +10,7 @@ el registro profesional; añade un **recuadro de ideas clave** a mitad de págin
 práctica que corrigen y explican sin puntuar + 2 respuestas abiertas con el botón de
 retroalimentación). Se mantienen los ajustes de las revisiones IV, V y VI (un bloque por página, tema
 **Nova**, terminología sin etiquetas de licencia ni precios). Todo se aplica por código (guion y
-maestro → `content.xml` → CLI de eXeLearning) y se verifica sin navegador (86 comprobaciones) y en
+maestro → `content.xml` → CLI de eXeLearning) y se verifica sin navegador (87 comprobaciones) y en
 Chrome real.
 **Objetivo del proyecto:** montar el curso y exportarlo → **conseguido**; queda la revisión del autor.
 
@@ -49,8 +49,8 @@ de ejercicios) repartidos en 29 bloques, 10 imágenes, 4 acordeones nativos, **8
 clave**, cuestionario de **20 preguntas** (14 correctas, 70 %) con 1 punto por pregunta y feedback por
 pregunta, tema **Nova** y el CSS propio del proyecto. `content.xml` validado contra el DTD y el XSD
 oficiales, y exportado a **`.elpx`**, **SCORM 1.2** y **HTML5** con el CLI de eXeLearning, sin tocar la
-interfaz. Verificado sin navegador (**86 comprobaciones**, incluidas las de terminología, las de
-cumplimiento del Art. 4, los recuadros y las respuestas abiertas) y en Chrome real: portada con
+interfaz. Verificado sin navegador (**87 comprobaciones**, incluidas las de terminología, las de
+cumplimiento del Art. 4, los recuadros, las respuestas abiertas y la coherencia de la portada) y en Chrome real: portada con
 overlay, diagramas, acordeón (despliega y pliega), tablas, navegación al pie, cuestionario (20
 preguntas, aciertos registrados), el recuadro con su estilo aplicado y la respuesta modelo que se
 despliega al pulsar el botón. Capturas en `entregables/capturas/rev7/`.
@@ -102,7 +102,7 @@ despliega al pulsar el botón. Capturas en `entregables/capturas/rev7/`.
 │   └── imagenes/    portada_curso_copilot.jpg + 5 iconos (PNG/SVG) + 2 diagramas (PNG/SVG) + CREDITOS.md
 ├── herramientas/
 │   ├── generar_curso_elpx.py      GENERADOR: guion -> content.xml -> .elpx (valida DTD/XSD)
-│   ├── verificar_paquete.py       verifica .elpx + SCORM + HTML5 sin navegador (70 comprobaciones,
+│   ├── verificar_paquete.py       verifica .elpx + SCORM + HTML5 sin navegador (87 comprobaciones,
 │   │                              incluidas las de terminología: sin etiquetas de licencia)
 │   ├── pruebas_interaccion.py     prueba real de acordeón y cuestionario en Chrome headless (CDP)
 │   ├── extraer_componentes_elpx.py  extrae/descifra componentes reales de un content.xml
@@ -154,6 +154,7 @@ done
 
 ```
 python3 herramientas/revision_vi.py                # 0) solo si hay que reaplicar la revisión VI (guion y maestro)
+python3 herramientas/revision_vii.py               # 0b) solo si hay que reaplicar la revisión VII (maestro)
 python3 herramientas/generar_curso_elpx.py        # 1) guion -> content.xml (+ .elpx mínimo; valida DTD/XSD)
 python3 herramientas/generar_curso_elpx.py --check  #    opcional: informe de fidelidad de textos y del quiz
 sh herramientas/exportar.sh                       # 2) -> .elpx completo + SCORM 1.2 + HTML5 + vista previa

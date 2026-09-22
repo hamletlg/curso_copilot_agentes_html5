@@ -80,9 +80,10 @@ guion_curso_copilot_exelearning.md      <- documento de producción (25 nodos, t
 contenido_curso_copilot_agentes.md      <- contenido maestro (mismo texto, en prosa)
 herramientas/
   revision_vi.py + revision_vi_nodos_nuevos.md   revisión VI: contenido nuevo y reconstrucción
+  revision_vii.py                                revisión VII: sincroniza el maestro con el guion
   generar_curso_elpx.py                          guion -> content.xml -> .elpx (valida DTD/XSD)
   exportar.sh                                    -> .elpx + SCORM 1.2 + HTML5 (CLI de eXeLearning)
-  verificar_paquete.py                           86 comprobaciones sin navegador
+  verificar_paquete.py                           87 comprobaciones sin navegador
   pruebas_interaccion.py                         pruebas reales en Chrome (CDP)
   capturar_pantallas.py                          capturas del curso
 reescritura_humana/                            revisión VII: reescritura, recuadros y actividades
@@ -98,7 +99,7 @@ reescritura_humana/                            revisión VII: reescritura, recua
 | Comprobación | Resultado |
 |---|---|
 | Validación del paquete contra el DTD y el XSD oficiales de eXeLearning | OK |
-| **86 comprobaciones** automáticas (`verificar_paquete.py`): 25 páginas, 29 bloques, 4 acordeones y sus enlaces, 10 imágenes referenciadas, 20 preguntas, terminología sin etiquetas de licencia ni precios, el **contenido mínimo del Art. 4 presente en el curso**, los **8 recuadros** y las **2 respuestas abiertas con su respuesta modelo** | Todas OK |
+| **87 comprobaciones** automáticas (`verificar_paquete.py`): 25 páginas, 29 bloques, 4 acordeones y sus enlaces, 10 imágenes referenciadas, 20 preguntas, terminología sin etiquetas de licencia ni precios, el **contenido mínimo del Art. 4 presente en el curso**, los **8 recuadros**, las **2 respuestas abiertas con su respuesta modelo** y la **duración de la portada** (coherente con la ficha: 3,5 h) | Todas OK |
 | Fidelidad de textos guion → HTML (25 páginas, incluidas las actividades interactivas) y del cuestionario (20 preguntas) | OK |
 | Recuadros: CSS en los tres entregables, uno por página seleccionada, en su sitio y sin intrusos (`verificar_recuadros.py`) | OK |
 | Pruebas de interacción en Chrome real: acordeón (desplegar/plegar), cuestionario (puntúa), navegación al pie, portada con *overlay*, recuadro con su estilo y respuesta modelo desplegable | OK |
@@ -131,8 +132,9 @@ SCORM 1.2 (el estándar lee `cmi.student_data.mastery_score`; por defecto usarí
    Microsoft 365; los ejemplos son de administración, documentación y reuniones.
 2. **Adaptarlo a una empresa concreta:** rellenar el inventario (página 14), la política interna
    (página 19, con la plantilla de `cumplimiento/03_…`) y sustituir los ejemplos por documentos
-   propios. El contenido vive en **un solo sitio**: `herramientas/revision_vi_nodos_nuevos.md` (para
-   páginas nuevas) y el guion.
+   propios. El contenido vive en **un solo sitio**: el **guion**, del que se derivan el curso
+   (`generar_curso_elpx.py`) y el maestro (`herramientas/revision_vii.py`, que comprueba página a
+   página que no se pierde ni una palabra).
 3. **Regenerar el paquete** tras cualquier cambio:
 
 ```

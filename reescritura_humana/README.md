@@ -40,6 +40,7 @@ guión (markdown)
 | `volcar_guion.py` | Vuelca textos y recuadros al guión (con copia de seguridad y red de seguridad) |
 | `contraste.py` | Contraste WCAG 2.1 de los colores del recuadro |
 | `verificar_recuadros.py` | Comprueba el recuadro y su CSS en la vista previa, el SCORM y el HTML5 |
+| `../herramientas/revision_vii.py` | Sincroniza el **maestro** con el guion (mismo texto en prosa, página a página) |
 | `muestra_nodo_17_riesgos.md` | La muestra: nodo 17 en original, Gemma 4B y Gemma 12B |
 | `informe_reescritura.md` | Las 25 páginas, una a una: marcas de IA antes y después, longitudes y tiempos |
 | `reescribir_quiz.py` · `quiz/` | Reescritura de las 20 preguntas del cuestionario (se comprueba que sigue siendo parseable) |
