@@ -10,7 +10,17 @@ acción formativa justificable.
 > línea desde `/docs` (`https://<usuario>.github.io/<repositorio>/`). También se puede abrir en local:
 > `python3 -m http.server -d docs` y entrar en `http://127.0.0.1:8000`.
 
-**Estado:** revisión VI · 13-sep-2026 · material terminado y verificado; pendientes menores al final.
+**Estado:** revisión VII · 22-sep-2026 · texto reescrito, 8 recuadros de ideas clave y la página de
+ejercicios montada con iDevices interactivos; material terminado y verificado (sin navegador y en
+Chrome real). Pendientes menores al final.
+
+> **Revisión VII (22-sep-2026):** los textos de las 25 páginas se reescribieron con un LLM local
+> (Gemma 4 12B) para que suenen a persona y no a máquina, sin perder el registro profesional; se
+> añadió un **recuadro de ideas clave** a mitad de página en 8 páginas (5, 10, 14, 17, 18, 19, 21 y
+> 22); y la página de **ejercicios** dejó de ser texto plano —sus 4 actividades son ahora iDevices
+> nativos: 2 test de práctica que corrigen y explican sin puntuar y 2 respuestas abiertas con el
+> botón de retroalimentación del iDevice—. El detalle está en
+> `reescritura_humana/README.md` y `reescritura_humana/PLAN.md`.
 
 ---
 
@@ -72,9 +82,13 @@ herramientas/
   revision_vi.py + revision_vi_nodos_nuevos.md   revisión VI: contenido nuevo y reconstrucción
   generar_curso_elpx.py                          guion -> content.xml -> .elpx (valida DTD/XSD)
   exportar.sh                                    -> .elpx + SCORM 1.2 + HTML5 (CLI de eXeLearning)
-  verificar_paquete.py                           80 comprobaciones sin navegador
+  verificar_paquete.py                           86 comprobaciones sin navegador
   pruebas_interaccion.py                         pruebas reales en Chrome (CDP)
   capturar_pantallas.py                          capturas del curso
+reescritura_humana/                            revisión VII: reescritura, recuadros y actividades
+  reescribir.py · escribir_recuadros.py          el LLM local escribe textos y recuadros
+  volcar_guion.py                                vuelca al guion (con red de seguridad de estructura)
+  verificar_recuadros.py                         el recuadro y su CSS EN los tres entregables
 ```
 
 ---
@@ -84,10 +98,11 @@ herramientas/
 | Comprobación | Resultado |
 |---|---|
 | Validación del paquete contra el DTD y el XSD oficiales de eXeLearning | OK |
-| **80 comprobaciones** automáticas (`verificar_paquete.py`): 25 páginas, un bloque por página, 4 acordeones y sus enlaces, 10 imágenes referenciadas, 20 preguntas, terminología sin etiquetas de licencia ni precios, y el **contenido mínimo del Art. 4 presente en el curso** | Todas OK |
-| Fidelidad de textos guion → HTML (24 nodos) y del cuestionario (20 preguntas) | OK |
-| Pruebas de interacción en Chrome real: acordeón (desplegar/plegar), cuestionario (puntúa), navegación al pie, portada con *overlay* | OK |
-| Capturas del render final | `entregables/capturas/rev6/` |
+| **86 comprobaciones** automáticas (`verificar_paquete.py`): 25 páginas, 29 bloques, 4 acordeones y sus enlaces, 10 imágenes referenciadas, 20 preguntas, terminología sin etiquetas de licencia ni precios, el **contenido mínimo del Art. 4 presente en el curso**, los **8 recuadros** y las **2 respuestas abiertas con su respuesta modelo** | Todas OK |
+| Fidelidad de textos guion → HTML (25 páginas, incluidas las actividades interactivas) y del cuestionario (20 preguntas) | OK |
+| Recuadros: CSS en los tres entregables, uno por página seleccionada, en su sitio y sin intrusos (`verificar_recuadros.py`) | OK |
+| Pruebas de interacción en Chrome real: acordeón (desplegar/plegar), cuestionario (puntúa), navegación al pie, portada con *overlay*, recuadro con su estilo y respuesta modelo desplegable | OK |
+| Capturas del render final | `entregables/capturas/rev7/` |
 
 Además, el contenido legal se contrastó el 13-sep-2026 con fuentes oficiales: la **Q&A de la AI Office**
 sobre alfabetización en IA (`digital-strategy.ec.europa.eu`), el **Reglamento (UE) 2024/1689** y el

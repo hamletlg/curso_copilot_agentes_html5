@@ -127,6 +127,21 @@ body.exe-export .portada{container-type:inline-size}
     text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.8)}
   body.exe-export .portada .portada-datos strong{color:#fff}
 }
+/* Recuadro de ideas clave (revisión VII). Es un recurso didáctico de refuerzo que va a MITAD de
+   página y solo en las páginas donde el guion lo pide: si apareciera en todas, el lector dejaría
+   de fijarse en él. Fondo secundario de la paleta del proyecto y borde de acento azul; la etiqueta
+   en versalitas. Contrastes comprobados con la fórmula de luminancia de WCAG 2.1:
+   #1E293B sobre #F8FAFC = 13,98:1 y #2563EB sobre #F8FAFC = 4,94:1 (AA texto normal los dos). */
+body.exe-export .caja-ideas-clave{margin:1.9em 0;padding:1.05em 1.25em 1.05em 1.35em;
+  background:#F8FAFC;border:1px solid #E2E8F0;border-left:5px solid #2563EB;border-radius:0 8px 8px 0}
+body.exe-export .caja-ideas-clave .caja-ideas-clave-titulo{margin:0 0 .55em;color:#2563EB;
+  font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;line-height:1.2}
+body.exe-export .caja-ideas-clave ul{margin:0;padding-left:1.25em}
+body.exe-export .caja-ideas-clave li{margin:.3em 0;color:#1E293B}
+body.exe-export .caja-ideas-clave li::marker{color:#2563EB}
+body.exe-export .caja-ideas-clave p{margin:.4em 0}
+@media (max-width:600px){body.exe-export .caja-ideas-clave{margin:1.5em 0;
+  padding:.9em 1em .9em 1.1em;border-left-width:4px}}
 </style>"""
 
 DTD_LOCAL = None  # se resuelve desde el contenedor si hace falta
@@ -178,6 +193,12 @@ def en_linea(texto: str) -> str:
 def fila_tabla(linea: str):
     celdas = [c.strip() for c in linea.strip().strip("|").split("|")]
     return celdas
+
+
+def escape_atributo(texto: str) -> str:
+    """Texto seguro para un valor de atributo HTML (`value="..."`)."""
+    return (texto.replace("&", "&amp;").replace('"', "&quot;")
+            .replace("<", "&lt;").replace(">", "&gt;"))
 
 
 def render_tabla(lineas):
@@ -261,23 +282,150 @@ def markdown_a_html(contenido: str) -> str:
     return "".join(render_bloque(b) for b in bloques if b.strip())
 
 
+# ------------------------------------------------------- recuadro de ideas clave (revisión VII)
+# Recurso de refuerzo que se coloca a mitad de página y solo en algunas páginas. Su texto vive en
+# el guion (fila «Recuadro de ideas clave»), con esta forma:
+#     **POSICIÓN:** tras «Título del bloque»<br><br>**Ideas clave**<br><br>- viñeta<br>- viñeta
+# El generador no inventa texto: solo lo coloca donde el guion dice.
+ANCLA_RECUADRO = re.compile(r"«([^»]+)»")
+
+
+def texto_recuadro(campo: str) -> str:
+    """Solo el texto del recuadro (la parte tras el salto doble), sin la línea «POSICIÓN:».
+
+    La línea de posición es una instrucción de montaje: no es texto que deba verse en la página,
+    así que queda fuera de la comprobación de fidelidad.
+    """
+    partes = re.split(r"(?:<br\s*/?>\s*){2,}", campo or "", maxsplit=1)
+    return partes[1].strip() if len(partes) == 2 else ""
+
+
+def _caja_html(campo: str):
+    """Convierte el campo del guion en (ancla del bloque, HTML del recuadro)."""
+    cuerpo = texto_recuadro(campo)
+    if not cuerpo:
+        raise ValueError("el recuadro necesita «**POSICIÓN:** tras «...»» y, tras un salto doble, "
+                         f"el texto: {campo[:80]!r}")
+    ancla_m = ANCLA_RECUADRO.search(campo.split("**")[0] or campo)
+    if not ancla_m:
+        raise ValueError("la posición del recuadro no cita el bloque de anclaje entre «»: "
+                         f"{campo[:80]!r}")
+    # La primera línea en negrita es el título del recuadro: hace de etiqueta visible y accesible.
+    m_titulo = re.match(r"\*\*(.+?)\*\*\s*(?:<br\s*/?>)?\s*", cuerpo)
+    titulo = m_titulo.group(1).strip() if m_titulo else "Ideas clave"
+    if m_titulo:
+        cuerpo = cuerpo[m_titulo.end():]
+    html = (f'<aside class="caja-ideas-clave" role="note" aria-label="{titulo}">'
+            f'<p class="caja-ideas-clave-titulo">{titulo}</p>'
+            f'{markdown_a_html(cuerpo)}</aside>')
+    return ancla_m.group(1).strip(), html
+
+
+# Cierres que delimitan el elemento que contiene el ancla: el recuadro entra justo después.
+CIERRES_ELEMENTO = ("</p>", "</li>", "</h2>", "</h3>", "</h4>", "</h5>", "</h6>",
+                    "</blockquote>", "</td>", "</th>", "</table>", "</ul>", "</ol>")
+# Encabezados del HTML ya montado (el generador los emite como h2..h6).
+RE_ENCABEZADO = re.compile(r"<h([2-6])[^>]*>(.*?)</h\1>", re.DOTALL)
+
+
+def patron_ancla(ancla: str):
+    """Regex del ancla: admite etiquetas y espacios entre sus palabras.
+
+    El ancla se escribe en el guion como texto normal («tras «Cuatro conceptos...»»), pero en el
+    HTML puede llevar negritas dentro, así que no vale un `find` literal.
+    """
+    palabras = [re.escape(p) for p in ancla.split()]
+    return re.compile(r"(?:<[^>]+>|\s)*".join(palabras), re.IGNORECASE)
+
+
+def _dentro_de_lista(html: str, pos: int) -> bool:
+    """¿La posición cae dentro de una lista? (entonces el recuadro va tras la lista entera)."""
+    abre = max(html.rfind("<ul", 0, pos), html.rfind("<ol", 0, pos))
+    cierra = max(html.rfind("</ul>", 0, pos), html.rfind("</ol>", 0, pos))
+    return abre > cierra
+
+
+def insertar_recuadro(html: str, ancla: str, caja: str) -> str:
+    """Coloca el recuadro justo después del párrafo, título o cita que contiene el ancla.
+
+    Falla en voz alta si el ancla no existe o si aparece más de una vez: montar la página sin el
+    recuadro (o con él en el sitio equivocado) en silencio es justo lo que no queremos, igual que
+    en la red de seguridad de las claves de nodo.
+    """
+    coincidencias = list(patron_ancla(ancla).finditer(html))
+    if not coincidencias:
+        raise ValueError(f"no encuentro el ancla «{ancla}» para el recuadro")
+    if len(coincidencias) > 1:
+        raise ValueError(f"el ancla «{ancla}» aparece {len(coincidencias)} veces; usa un texto único")
+    inicio_ancla, fin_ancla = coincidencias[0].start(), coincidencias[0].end()
+
+    # 1) Si el ancla es un ENCABEZADO, el recuadro cierra la sección entera: va antes del siguiente
+    #    encabezado de nivel igual o superior (o al final de la página si no hay ninguno).
+    for m in RE_ENCABEZADO.finditer(html):
+        if m.start() <= inicio_ancla and fin_ancla <= m.end():
+            nivel = int(m.group(1))
+            for otro in RE_ENCABEZADO.finditer(html, m.end()):
+                if int(otro.group(1)) <= nivel:
+                    return html[:otro.start()] + caja + html[otro.start():]
+            return html + caja
+
+    # 2) Si el ancla cae en una lista, va tras la lista completa (no dentro del <ul>).
+    if _dentro_de_lista(html, fin_ancla):
+        cierres = [html.find(c, fin_ancla) for c in ("</ul>", "</ol>")]
+        cierres = [p for p in cierres if p != -1]
+        if not cierres:
+            raise ValueError(f"la lista del ancla «{ancla}» no cierra")
+        fin = min(cierres) + len("</ul>")
+        return html[:fin] + caja + html[fin:]
+
+    # 3) Párrafo, cita o etiqueta en negrita: el recuadro entra justo detrás de ese elemento.
+    candidatos = [(html.find(c, fin_ancla), c) for c in CIERRES_ELEMENTO]
+    candidatos = [(p, c) for p, c in candidatos if p != -1]
+    if not candidatos:
+        raise ValueError(f"el ancla «{ancla}» no está dentro de ningún elemento que cierre")
+    pos, cierre = min(candidatos)
+    fin = pos + len(cierre)
+    return html[:fin] + caja + html[fin:]
+
+
 # --------------------------------------------------------------------------- iDevices
 
 
-def componente_texto(ts, usados, bloques_html, idevice_id=None):
+def componente_texto(ts, usados, bloques_html, idevice_id=None,
+                      feedback_titulo="", feedback_texto=""):
     """iDevice Texto (patrón Standard JSON).
 
     Cada página lleva UN SOLO iDevice Texto: `bloques_html` es la concatenación de todos los
     fragmentos de la página (intro + acordeón + notas + imágenes). Así la página tiene un único
     bloque y el lector no se ve obligado a hacer scroll entre bloques.
+
+    `feedback_texto` activa el botón de retroalimentación que trae el propio iDevice (el export
+    llama a `createFeedbackHTML` cuando `textFeedbackTextarea` no está vacío): el alumno escribe
+    su respuesta y el botón le muestra la respuesta modelo. Es el iDevice nativo que convierte una
+    actividad de respuesta abierta en algo interactivo, sin JavaScript propio (regla 7).
     """
     idevice_id = idevice_id or oid(ts, nuevo_sufijo(usados))
     cuerpo = f'<div class="exe-text">{bloques_html}</div>'
+    # La retroalimentación va DENTRO del htmlView, no solo en las propiedades del iDevice.
+    # Motivo (verificado en el export): el exportador solo copia `ideviceId` al atributo
+    # `data-idevice-json-data`, así que el `text.js` del iDevice nunca recibe
+    # `textFeedbackTextarea` y la respuesta modelo no llegaba al curso: el ejercicio quedaba sin
+    # su respuesta. El marcado es el que genera el propio `createFeedbackHTML` del iDevice, para
+    # que su JS lo enganche y lo muestre y oculte al pulsar el botón.
+    feedback_html = ""
+    if feedback_texto:
+        titulo_btn = feedback_titulo or "Mostrar retroalimentación"
+        feedback_html = (
+            '<div class="iDevice_buttons feedback-button js-required">'
+            f'<input type="button" class="feedbacktooglebutton" value="{escape_atributo(titulo_btn)}">'
+            "</div>"
+            f'<div class="feedback js-feedback js-hidden">{feedback_texto}</div>'
+        )
     html_view = (
         '<div class="exe-text-template"><div class="textIdeviceContent">\n'
         '  <div class="exe-text-activity">\n    <div>\n'
         f"      {cuerpo}\n"
-        '    </div>\n    <p class="clearfix"></p>\n  </div>\n</div></div>'
+        f'    </div>\n    <p class="clearfix"></p>\n    {feedback_html}\n  </div>\n</div></div>'
     )
     props = {
         "ideviceId": idevice_id,
@@ -286,8 +434,8 @@ def componente_texto(ts, usados, bloques_html, idevice_id=None):
         "textInfoParticipantsInput": "",
         "textInfoParticipantsTextInput": "Agrupamiento",
         "textTextarea": cuerpo,
-        "textFeedbackInput": "Mostrar retroalimentación",
-        "textFeedbackTextarea": "",
+        "textFeedbackInput": feedback_titulo or "Mostrar retroalimentación",
+        "textFeedbackTextarea": feedback_texto,
     }
     return {"tipo": "text", "id": idevice_id, "htmlView": html_view,
             "jsonProperties": json.dumps(props, ensure_ascii=False)}
@@ -417,37 +565,139 @@ def parse_quiz(contenido: str):
     return preguntas
 
 
+# --------------------------------------------------- actividades interactivas (revisión VII)
+# La página de EJERCICIOS no se monta como texto: sus actividades van con iDevices nativos, que
+# es lo que las hace interactivas. El guion las trae en su propia fila, con cuatro bloques:
+#
+#     **Bloque 1 — Test de práctica: <título>**
+#     **Instrucción:** <una frase>
+#     **Feedback correcto:** <una frase>
+#     **Feedback incorrecto:** <una frase>
+#     **Pregunta 1:** <enunciado>
+#     a) <opción>
+#     b) <opción> [CORRECTA]
+#
+#     **Bloque 2 — Respuesta abierta: <título>**
+#     **Enunciado:** <lo que tiene que hacer el alumno>
+#     **Retroalimentación:** <la respuesta modelo, comentada>
+#
+# «Test de práctica» -> iDevice Test NO evaluativo (se comprueba y explica, no puntúa).
+# «Respuesta abierta» -> iDevice Texto con el botón de retroalimentación nativo.
+RE_BLOQUE_ACTIVIDAD = re.compile(r"\*\*Bloque (\d+) — ([^:*]+):\s*(.*?)\*\*")
+TIPOS_ACTIVIDAD = {"Test de práctica": "test", "Respuesta abierta": "abierta"}
+INSTRUCCION_PRACTICA = ("Selecciona la respuesta correcta en cada caso. Puedes repetir la "
+                        "actividad tantas veces como quieras: no cuenta para la evaluación.")
+INSTRUCCION_RESPUESTA_ABIERTA = "Ver una posible respuesta"
+
+
+def validar_preguntas(preguntas, maximo_opciones=4):
+    """Comprobaciones de un test: opciones suficientes y exactamente una marcada [CORRECTA]."""
+    problemas = []
+    if not preguntas:
+        problemas.append("no se ha detectado ninguna pregunta")
+    for p in preguntas:
+        if not (2 <= len(p["opciones"]) <= maximo_opciones):
+            problemas.append(f"P{p['n']}: {len(p['opciones'])} opciones "
+                             f"(se piden entre 2 y {maximo_opciones})")
+        if p["solucion"] is None:
+            problemas.append(f"P{p['n']}: ninguna opción marcada [CORRECTA]")
+    return problemas
+
+
+def parse_actividades(campo: str):
+    """Convierte la fila «Actividades interactivas» en la lista de bloques a montar."""
+    if not campo.strip():
+        return []
+    trozos = RE_BLOQUE_ACTIVIDAD.split(campo)
+    if len(trozos) < 5:
+        raise ValueError("la fila «Actividades interactivas» no tiene ningún bloque «**Bloque N — …**»")
+    bloques = []
+    for i in range(1, len(trozos), 4):
+        numero, tipo, titulo, cuerpo = (trozos[i], trozos[i + 1].strip(),
+                                        trozos[i + 2].strip(), trozos[i + 3])
+        clase = TIPOS_ACTIVIDAD.get(tipo)
+        if clase is None:
+            raise ValueError(f"bloque {numero}: tipo desconocido {tipo!r}; "
+                             f"los válidos son {sorted(TIPOS_ACTIVIDAD)}")
+        if clase == "test":
+            def campo_linea(nombre, defecto="", cuerpo=cuerpo):
+                m = re.search(r"\*\*" + nombre + r":\*\*\s*(.*?)(?:<br|$)", cuerpo)
+                return m.group(1).strip() if m else defecto
+
+            instruccion = campo_linea("Instrucción", INSTRUCCION_PRACTICA)
+            feedback_ok = campo_linea("Feedback correcto", FEEDBACK_OK)
+            feedback_ko = campo_linea("Feedback incorrecto", FEEDBACK_KO)
+            cuerpo_preguntas = re.sub(r"\*\*(Instrucción|Feedback correcto|Feedback incorrecto):\*\*"
+                                      r"\s*(.*?)(?=<br|$)", "", cuerpo)
+            preguntas = parse_quiz(cuerpo_preguntas)
+            problemas = validar_preguntas(preguntas)
+            if problemas:
+                raise ValueError(f"bloque {numero} ({titulo}): " + "; ".join(problemas))
+            bloques.append({"tipo": "test", "orden": int(numero), "titulo": titulo,
+                            "instruccion": instruccion, "feedback_ok": feedback_ok,
+                            "feedback_ko": feedback_ko, "preguntas": preguntas})
+        else:
+            # El enunciado llega hasta «**Retroalimentación:**», con el separador de <br> que use
+            # el modelo (uno o dos): exigir un número exacto era una trampa innecesaria.
+            m_ret = re.search(r"\*\*Retroalimentación:\*\*\s*(.*)$", cuerpo, re.DOTALL)
+            m_env = re.search(r"\*\*Enunciado:\*\*\s*(.*?)\*\*Retroalimentación:\*\*", cuerpo,
+                              re.DOTALL)
+            if not (m_env and m_ret):
+                raise ValueError(f"bloque {numero} ({titulo}): faltan «**Enunciado:**» o "
+                                 f"«**Retroalimentación:**»")
+            enunciado = re.sub(r"(?:<br\s*/?>|\s)+$", "", m_env.group(1)).strip()
+            bloques.append({"tipo": "abierta", "orden": int(numero), "titulo": titulo,
+                            "enunciado": enunciado,
+                            "retro": m_ret.group(1).strip()})
+    return bloques
+
+
 def xor_encode(texto: str) -> str:
     """escape(XOR 146) de common.js: percent-encoding latin-1 del XOR."""
     xored = "".join(chr(ord(c) ^ XOR_KEY) for c in texto)
     return urllib.parse.quote(xored.encode("latin-1"), safe="")
 
 
-def componente_quiz(ts, usados, preguntas):
+# El payload del iDevice Test viaja cifrado en el HTML. Este patrón lo localiza para poder
+# comprobar su texto en claro (informe de fidelidad) sin abrir el navegador.
+RE_PAYLOAD_CIFRADO = re.compile(r'quext-DataGame js-hidden"?>([^<]+)<')
+
+
+def componente_quiz(ts, usados, preguntas, titulo=None, instruccion=None, evaluativo=True,
+                    evaluacion_id=None, feedback_ok=FEEDBACK_OK, feedback_ko=FEEDBACK_KO):
+    """iDevice Test (`quick-questions`).
+
+    `evaluativo=True` es la evaluación final: puntúa y lo comunica al LMS (`isScorm=1`).
+    `evaluativo=False` es un test de práctica: el alumno se comprueba, pero la actividad no
+    reporta nota (no entra en la evaluación del curso). Es el uso que pide la página de
+    ejercicios: practicar con corrección inmediata sin que cuente para la calificación.
+    """
     tpl = json.loads(JSON_PLANTILLA_QUIZ.read_text(encoding="utf-8"))
     idevice_id = oid(ts, nuevo_sufijo(usados))
-    evaluacion_id = "COPILOT10P"
+    evaluacion_id = evaluacion_id or ("COPILOT10P" if evaluativo else "COPILOTPRACT")
+    instruccion = instruccion or INSTRUCCION_QUIZ
+    titulo = titulo or "Comprueba lo que has aprendido"
 
     game = {
         "asignatura": "", "author": "", "authorVideo": "", "typeGame": "QuExt",
         "endVideo": 0, "idVideo": "", "startVideo": 0,
-        "instructionsExe": urllib.parse.quote(f"<p>{INSTRUCCION_QUIZ}</p>", safe=""),
-        "instructions": INSTRUCCION_QUIZ,
+        "instructionsExe": urllib.parse.quote(f"<p>{instruccion}</p>", safe=""),
+        "instructions": instruccion,
         "showMinimize": False, "optionsRamdon": False, "answersRamdon": False,
         "showSolution": True, "timeShowSolution": 3,
         "useLives": False, "numberLives": 1,
         "itinerary": {"showClue": False, "clueGame": "", "percentageClue": 0,
                       "showCodeAccess": False, "codeAccess": "", "messageCodeAccess": ""},
         "customMessages": True, "customScore": False,
-        "evaluation": True, "evaluationID": evaluacion_id,
-        "feedBack": True, "gameMode": 0, "id": idevice_id, "isScorm": 1,
+        "evaluation": evaluativo, "evaluationID": evaluacion_id,
+        "feedBack": True, "gameMode": 0, "id": idevice_id, "isScorm": 1 if evaluativo else 0,
         "msgs": tpl["msgs"],
         # percentajeQuestions = % de preguntas que se muestran (100 = las 10 del guion).
         # OJO: no es la nota de corte. La nota de corte la aplica la política SCORM 1.2
         # leyendo cmi.student_data.mastery_score del LMS (por defecto 50 si el LMS no la publica).
         "percentajeFB": 100, "percentajeQuestions": 100, "repeatActivity": True,
         "textAfter": "", "textButtonScorm": "Guardar puntuación", "textFeedBack": "",
-        "title": "Comprueba lo que has aprendido", "useLives": False, "version": 2,
+        "title": titulo, "useLives": False, "version": 2,
         "weighted": 100,
         "questionsGame": [],
     }
@@ -458,18 +708,18 @@ def componente_quiz(ts, usados, preguntas):
             "url": "", "audio": "", "soundVideo": 1, "imageVideo": 1, "iVideo": 0,
             "fVideo": 0, "silentVideo": 0, "tSilentVideo": 0, "eText": "",
             "quextion": p["enunciado"], "options": p["opciones"], "solution": p["solucion"],
-            "msgHit": FEEDBACK_OK, "msgError": FEEDBACK_KO,
+            "msgHit": feedback_ok, "msgError": feedback_ko,
         })
 
     payload = xor_encode(json.dumps(game, ensure_ascii=False))
     html_view = (tpl["htmlView_tpl"]
                  .replace("__PAYLOAD__", payload)
-                 .replace("__INSTR__", INSTRUCCION_QUIZ)
+                 .replace("__INSTR__", instruccion)
                  .replace("__IDEVICEID__", idevice_id)
                  .replace("__EVALUATIONID__", evaluacion_id))
     textarea = (tpl["textTextarea_tpl"]
                 .replace("__PAYLOAD__", payload)
-                .replace("__INSTR__", INSTRUCCION_QUIZ)
+                .replace("__INSTR__", instruccion)
                 .replace("__IDEVICEID__", idevice_id))
     props = {
         "ideviceId": idevice_id,
@@ -494,6 +744,8 @@ def extraer_nodos():
         num, _, titulo = cabecera.partition("—")
         m = fila("Contenido en pantalla")
         notas_m = fila("Notas de producción")
+        recuadro_m = fila("Recuadro de ideas clave")
+        actividades_m = fila("Actividades interactivas")
         notas = notas_m.group(1).strip() if notas_m else ""
         # Nodo 14: el guion dice en las notas qué texto lleva la Nota (mensaje clave entre «»)
         clave = ""
@@ -508,6 +760,8 @@ def extraer_nodos():
             "notas": notas,
             "mensaje_clave": clave,
             "contenido": (m.group(1) if m else "").strip(),
+            "recuadro": (recuadro_m.group(1) if recuadro_m else "").strip(),
+            "actividades_texto": (actividades_m.group(1) if actividades_m else "").strip(),
         })
     # nombres del sitemap (§2). Dos formas en el guion:
     #   «N. **NOMBRE** — descripción»      (la descripción va fuera del énfasis)
@@ -655,10 +909,30 @@ def componentes_de_nodo(nodo, ts, usados):
         texto(_imagen_centrada("diagrama_ia_al_agente.png", ALT_IA_AL_AGENTE, 640, 400))
         texto(markdown_a_html(c))
 
-    elif clave in (C_LIMITES, C_INVENTARIO, C_POLITICA, C_ART4, C_DATOS, C_EJERCICIOS):
+    elif clave in (C_LIMITES, C_INVENTARIO, C_POLITICA, C_ART4, C_DATOS):
         # Páginas con una Nota destacada al final (marca «> **Nota:**» del guion).
         for frag in _fragmentos_con_nota(c, "> **Nota:**"):
             texto(frag)
+
+    elif clave == C_EJERCICIOS:
+        # Página de prácticas (revisión VII). «Contenido en pantalla» trae la introducción; las
+        # actividades van en su propia fila y se montan con iDevices nativos e interactivos:
+        #   Test de práctica     -> iDevice Test no evaluativo (corrige y explica, no puntúa)
+        #   Respuesta abierta    -> iDevice Texto con el botón de retroalimentación nativo
+        texto(markdown_a_html(c))
+        for activ in parse_actividades(nodo.get("actividades_texto") or ""):
+            if activ["tipo"] == "test":
+                otros.append(componente_quiz(
+                    ts, usados, activ["preguntas"], titulo=activ["titulo"],
+                    instruccion=activ["instruccion"], evaluativo=False,
+                    evaluacion_id=f"COPILOTPRACT{activ['orden']}",
+                    feedback_ok=activ["feedback_ok"], feedback_ko=activ["feedback_ko"]))
+            else:
+                otros.append(componente_texto(
+                    ts, usados,
+                    f'<h3>{en_linea(activ["titulo"])}</h3>' + markdown_a_html(activ["enunciado"]),
+                    feedback_titulo=INSTRUCCION_RESPUESTA_ABIERTA,
+                    feedback_texto=markdown_a_html(activ["retro"])))
 
     elif clave == C_AGENTE:
         for frag in _fragmentos_con_nota(c, "> **Definición clave:**"):
@@ -732,6 +1006,14 @@ def componentes_de_nodo(nodo, ts, usados):
         # Páginas de texto plano: aplicaciones en Word/Excel/SharePoint, inventario de IA,
         # artículo 4 y ejercicios prácticos.
         texto(markdown_a_html(c))
+
+    # Recuadro de ideas clave (revisión VII): si el guion lo define para esta página, entra en el
+    # punto exacto que indica la fila (al final del bloque citado). El texto no se reparte ni se
+    # inventa aquí: se inserta tal cual en el flujo del iDevice único.
+    campo_recuadro = (nodo.get("recuadro") or "").strip()
+    if campo_recuadro and any(t.strip() for t in textos):
+        ancla, caja = _caja_html(campo_recuadro)
+        textos[:] = [insertar_recuadro("\n".join(textos), ancla, caja)]
 
     # Un solo iDevice Texto por página: se concatenan todos los fragmentos.
     comps = []
@@ -857,6 +1139,49 @@ def significativas(s: str):
     return {w for w in re.findall(r"[a-záéíóúüñ]{3,}", texto_plano(s))}
 
 
+# Etiquetas de la fila «Actividades interactivas»: son instrucciones de montaje, no texto de la
+# página (igual que la línea «POSICIÓN:» del recuadro). Se quitan antes de comparar.
+ETIQUETAS_ACTIVIDADES = re.compile(
+    r"\*\*Bloque \d+ — [^*]*\*\*"                       # **Bloque 2 — Respuesta abierta: <título>**
+    r"|\*\*(?:Instrucción|Feedback correcto|Feedback incorrecto|Pregunta \d+|"
+    r"Enunciado|Retroalimentación):\*\*"
+    r"|\[CORRECTA\]")
+
+
+def texto_actividades(campo: str) -> str:
+    """Texto de las actividades sin sus etiquetas de montaje («**Bloque 2 — Test de práctica:**»,
+    «**Retroalimentación:**», «[CORRECTA]»): lo que de verdad tiene que verse en la página."""
+    return ETIQUETAS_ACTIVIDADES.sub(" ", campo)
+
+
+def texto_cifrados(html: str) -> str:
+    """Texto en claro que va dentro de los iDevice Test (payload cifrado XOR + urlencode).
+
+    La página de ejercicios monta sus tests con el iDevice nativo, que guarda las preguntas
+    cifradas: si la comprobación de fidelidad solo mirara el HTML visible, daría por perdido un
+    texto que sí está en la página (y al revés: no vería un texto que se hubiera colado ahí).
+    """
+    trozos = []
+    for m in RE_PAYLOAD_CIFRADO.finditer(html):
+        raw = urllib.parse.unquote_to_bytes(m.group(1))
+        claro = "".join(chr(b ^ XOR_KEY) for b in raw)
+        try:
+            trozos.append(_todas_las_cadenas(json.loads(claro)))
+        except json.JSONDecodeError:
+            trozos.append(claro)
+    return " ".join(trozos)
+
+
+def _todas_las_cadenas(obj) -> str:
+    if isinstance(obj, str):
+        return obj
+    if isinstance(obj, dict):
+        return " ".join(_todas_las_cadenas(v) for v in obj.values())
+    if isinstance(obj, (list, tuple)):
+        return " ".join(_todas_las_cadenas(v) for v in obj)
+    return ""
+
+
 def informe_fidelidad(nodos):
     print("\n=== FIDELIDAD DE TEXTOS (guion -> HTML generado) ===")
     problemas = 0
@@ -864,8 +1189,15 @@ def informe_fidelidad(nodos):
         if clave_de_nodo(nodo) == C_QUIZ:
             continue  # el cuestionario se verifica aparte
         comps = componentes_de_nodo(nodo, "20260912220000", set())
-        gen = " ".join(x["htmlView"] for x in comps if x["tipo"] == "text")
-        faltan = sorted(significativas(nodo["contenido"]) - significativas(gen))
+        # Todos los componentes, no solo el iDevice de texto: la página de ejercicios monta sus
+        # actividades con iDevices interactivos y su texto también cuenta.
+        gen = " ".join(x["htmlView"] for x in comps)
+        gen = gen + " " + texto_cifrados(gen)
+        # El recuadro de ideas clave también es texto del guion: entra en la comprobación. La
+        # línea «POSICIÓN:» no, porque es una instrucción de montaje.
+        fuente = (nodo["contenido"] + " " + texto_recuadro(nodo.get("recuadro") or "")
+                  + " " + texto_actividades(nodo.get("actividades_texto") or ""))
+        faltan = sorted(significativas(fuente) - significativas(gen))
         if faltan:
             problemas += 1
             print(f"  NODO {nodo['nodo']:>2}: FALTAN {len(faltan)} -> {faltan[:15]}")
@@ -925,7 +1257,11 @@ def main():
         if not n["contenido"]:
             print(f"AVISO: el nodo {n['nodo']} no tiene contenido extraido")
 
-    xml = construir_content_xml(nodos, ts, usados)
+    try:
+        xml = construir_content_xml(nodos, ts, usados)
+    except ValueError as exc:
+        print(f"FALLO DE MONTAJE: {exc}")
+        return 1
     SALIDA.mkdir(parents=True, exist_ok=True)
     (SALIDA / "content.xml").write_text(xml, encoding="utf-8")
     # el CSS propio, en un fichero aparte, para que el post-proceso lo inyecte donde haga falta

@@ -249,6 +249,69 @@ async def main():
         print(f"     marcador: {r1['marcador']!r}")
         print(f"     siguiente pregunta: {r1['siguiente']!r}")
 
+        print("\n=== 3) RECUADRO DE IDEAS CLAVE (página 19: estilo aplicado) ===")
+        await ir("html/19-politica-de-uso-y-protocolo-de-incidentes.html")
+        dr = json.loads(await js("""(() => {
+            const a = document.querySelector('aside.caja-ideas-clave');
+            if (!a) return JSON.stringify({falta: true});
+            const s = getComputedStyle(a);
+            const t = a.querySelector('.caja-ideas-clave-titulo');
+            const cuerpo = document.querySelector('.page-content') || document.body;
+            const ra = a.getBoundingClientRect(), rc = cuerpo.getBoundingClientRect();
+            const desplazado = rc.top + window.scrollY;
+            return JSON.stringify({falta: false,
+                fondo: s.backgroundColor, bordeIzq: s.borderLeftColor,
+                anchoBorde: s.borderLeftWidth, role: a.getAttribute('role'),
+                etiqueta: t ? t.textContent.trim() : null,
+                colorEtiqueta: t ? getComputedStyle(t).color : null,
+                vinietas: a.querySelectorAll('li').length,
+                posicion: (ra.top + window.scrollY - desplazado) / rc.height,
+                dentroDeLaColumna: ra.left >= rc.left - 1 && ra.right <= rc.right + 1});
+        })()"""))
+        if dr.get("falta"):
+            check("recuadro: presente en la página 19", False)
+        else:
+            check("recuadro: fondo y borde de acento del proyecto",
+                  dr["fondo"] == "rgb(248, 250, 252)" and dr["bordeIzq"] == "rgb(37, 99, 235)",
+                  f"fondo={dr['fondo']} borde={dr['bordeIzq']}")
+            check("recuadro: role=note y etiqueta visible",
+                  dr["role"] == "note" and bool(dr["etiqueta"]), f"role={dr['role']} · {dr['etiqueta']!r}")
+            check("recuadro: 3 o más viñetas", dr["vinietas"] >= 3, f"{dr['vinietas']}")
+            check("recuadro: cae a mitad de página",
+                  0.25 <= dr["posicion"] <= 0.80, f"{dr['posicion']:.0%}")
+            check("recuadro: no desborda la columna de texto", dr["dentroDeLaColumna"])
+
+        print("\n=== 4) RESPUESTA ABIERTA (página 23: el botón enseña la respuesta modelo) ===")
+        await ir("html/23-ejercicios-practicos.html", 4.0)
+        df = json.loads(await js("""(() => {
+            const b = document.querySelector('input.feedbacktooglebutton');
+            const f = document.querySelector('.feedback.js-feedback');
+            if (!b || !f) return JSON.stringify({falta: true});
+            return JSON.stringify({falta: false, etiqueta: b.value,
+                ocultoDeEntrada: getComputedStyle(f).display === 'none',
+                tieneRespuesta: f.textContent.includes('Prepara un resumen')});
+        })()"""))
+        if df.get("falta"):
+            check("respuesta abierta: botón y panel presentes", False)
+        else:
+            check("respuesta abierta: botón con su etiqueta",
+                  df["etiqueta"] == "Ver una posible respuesta", df["etiqueta"])
+            check("respuesta abierta: la respuesta empieza oculta", df["ocultoDeEntrada"])
+            check("respuesta abierta: la respuesta modelo está en el panel", df["tieneRespuesta"])
+        await js("document.querySelector('input.feedbacktooglebutton').click()")
+        await asyncio.sleep(1.2)
+        df2 = json.loads(await js(r"""(() => {
+            const b = document.querySelector('input.feedbacktooglebutton');
+            const f = document.querySelector('.feedback.js-feedback');
+            return JSON.stringify({visible: b.offsetParent !== null && f.offsetHeight > 0,
+                alto: f.offsetHeight,
+                empieza: f.textContent.trim().replace(/\s+/g, ' ').slice(0, 80),
+                textoBoton: b.value});
+        })()"""))
+        check("respuesta abierta: el clic despliega la respuesta", df2["visible"], f"alto={df2['alto']}")
+        print(f"     respuesta visible: {df2['empieza']!r}")
+        print(f"     botón tras el clic: {df2['textoBoton']!r}")
+
     proc.terminate()
     print("\n" + ("INTERACCIONES OK" if not fallos else f"FALLOS: {fallos}"))
 

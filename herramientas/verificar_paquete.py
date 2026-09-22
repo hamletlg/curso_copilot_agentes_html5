@@ -12,6 +12,8 @@ Comprueba, sin abrir el navegador:
   - el bloque de cumplimiento (revisión VI): los conceptos legales que el Art. 4 exige están
     presentes en el curso y en el cuestionario
   - el cuestionario: descifra su estado (XOR 146) y valida nota de corte, SCORM y las 20 preguntas
+  - la revisión VII: los recuadros de ideas clave (8 páginas) y las actividades interactivas de la
+    página de ejercicios (2 test de práctica + 2 respuestas abiertas con su respuesta modelo)
   - el SCORM 1.2: manifiesto (schemaversion, adlcp), páginas, recursos e interacciones
   - el HTML5: páginas, recursos e interacciones
 """
@@ -29,10 +31,20 @@ SCORM = ENT / "curso_copilot_agentes_scorm12.zip"
 HTML5 = ENT / "curso_copilot_agentes_html5.zip"
 XOR_KEY = 146
 
-# 25 páginas: guion y curso coinciden (revisión VI). 24 de contenido + el cuestionario,
-# y 24 iDevices Texto (uno por página).
+# 25 páginas: guion y curso coinciden (revisión VI). 24 de contenido + el cuestionario.
+# Revisión VII: la página de EJERCICIOS deja de ser un iDevice Texto único y monta sus actividades
+# con iDevices nativos (2 test de práctica + 2 respuestas abiertas), así que esa página lleva
+# 5 bloques y el total sube a 29 bloques y 29 componentes (26 Texto + 3 Cuestionario).
 N_PAGINAS = 25
-N_TEXTOS = 24
+N_BLOQUES = 29
+N_COMPONENTES = 29
+N_TEXTOS = 26
+N_QUIZ = 3
+N_BLOQUES_EJERCICIOS = 5
+N_PAGINA_EJERCICIOS = 23
+N_RECUADROS = 8
+N_TEST_PRACTICA = 2
+N_RESPUESTAS_ABIERTAS = 2
 N_IMAGENES = 10
 N_ACORDEONES = 4
 N_PREGUNTAS = 20
@@ -91,22 +103,28 @@ with zipfile.ZipFile(ELPX) as z:
     check("content.dtd incluido", "content.dtd" in nombres)
     check(f"{N_PAGINAS} nodos", xml.count("<odeNavStructure>") == N_PAGINAS,
           f"{xml.count('<odeNavStructure>')}")
-    check(f"{N_PAGINAS} bloques / {N_PAGINAS} componentes",
-          xml.count("<odePagStructure>") == N_PAGINAS
-          and xml.count("<odeComponent>") == N_PAGINAS)
+    check(f"{N_BLOQUES} bloques / {N_COMPONENTES} componentes",
+          xml.count("<odePagStructure>") == N_BLOQUES
+          and xml.count("<odeComponent>") == N_COMPONENTES,
+          f"{xml.count('<odePagStructure>')} / {xml.count('<odeComponent>')}")
     check(f"{N_TEXTOS} iDevices Texto",
-          xml.count("<odeIdeviceTypeName>text</odeIdeviceTypeName>") == N_TEXTOS)
-    check("1 iDevice Cuestionario",
-          xml.count("<odeIdeviceTypeName>quick-questions</odeIdeviceTypeName>") == 1)
+          xml.count("<odeIdeviceTypeName>text</odeIdeviceTypeName>") == N_TEXTOS,
+          f"{xml.count('<odeIdeviceTypeName>text</odeIdeviceTypeName>')}")
+    check(f"{N_QUIZ} iDevices Cuestionario (evaluación + 2 test de práctica)",
+          xml.count("<odeIdeviceTypeName>quick-questions</odeIdeviceTypeName>") == N_QUIZ,
+          f"{xml.count('<odeIdeviceTypeName>quick-questions</odeIdeviceTypeName>')}")
 
-    # revisión IV: un bloque por página, sin nombre de bloque
+    # revisión IV: un bloque por página, sin nombre de bloque. Excepción: la página de ejercicios,
+    # que necesita un bloque por actividad (revisión VII).
     paginas = re.findall(r"<odeNavStructure>(.*?)</odeNavStructure>", xml, re.S)
-    check("un solo bloque por pagina",
-          all(p.count("<odePagStructure>") == 1 for p in paginas),
-          f"max={max(p.count('<odePagStructure>') for p in paginas)}")
+    bloques_por_pagina = {i + 1: p.count("<odePagStructure>") for i, p in enumerate(paginas)}
+    esperado = {n: (N_BLOQUES_EJERCICIOS if n == N_PAGINA_EJERCICIOS else 1) for n in bloques_por_pagina}
+    check("un bloque por pagina (5 en la de ejercicios)",
+          bloques_por_pagina == esperado,
+          f"distintas: {[n for n in bloques_por_pagina if bloques_por_pagina[n] != esperado[n]]}")
     check("bloques sin nombre (nada de la etiqueta «Texto»)",
           "<blockName>Texto</blockName>" not in xml
-          and xml.count("<blockName></blockName>") == N_PAGINAS,
+          and xml.count("<blockName></blockName>") == N_BLOQUES,
           f"con nombre: {len(re.findall(r'<blockName>(.+?)</blockName>', xml))}")
 
     # revisión IV: menú lateral numerado y sin la etiqueta decorativa «MÓDULO x —»
@@ -152,10 +170,20 @@ with zipfile.ZipFile(ELPX) as z:
     check("credito de portada (ultima pagina)", "Jakub Zerdzicki" in xml)
     check("enlaces externos con target", xml.count('target="_blank"') >= 3)
 
-    # cuestionario: descifrar el estado y comprobar los requisitos del guion
-    q = [c for c in comps if "<odeIdeviceTypeName>quick-questions</odeIdeviceTypeName>" in c][0]
-    payload = re.search(r'quext-DataGame js-hidden"?>([^<]+)<', q).group(1)
-    estado = json.loads(descifrar(payload))
+    # cuestionario: descifrar el estado y comprobar los requisitos del guion. Desde la revisión VII
+    # la página de ejercicios trae además dos test de práctica (no evaluativos), así que la
+    # evaluación final se identifica por isScorm=1 y no por ser el primer quick-questions.
+    quices = []
+    for c in comps:
+        if "<odeIdeviceTypeName>quick-questions</odeIdeviceTypeName>" not in c:
+            continue
+        payload = re.search(r'quext-DataGame js-hidden"?>([^<]+)<', c).group(1)
+        quices.append({"id": re.search(r'data-evaluationid="([^"]+)"', c).group(1),
+                       "html": c, "estado": json.loads(descifrar(payload))})
+    finales = [x for x in quices if x["estado"]["isScorm"] == 1]
+    check("una sola evaluación final (isScorm=1)", len(finales) == 1,
+          f"{[x['id'] for x in finales]}")
+    estado = (finales or quices)[0]["estado"]
     check(f"cuestionario: {N_PREGUNTAS} preguntas", len(estado["questionsGame"]) == N_PREGUNTAS,
           f"{len(estado['questionsGame'])}")
     check("cuestionario: muestra las 20 preguntas (percentajeQuestions=100)",
@@ -192,6 +220,42 @@ with zipfile.ZipFile(ELPX) as z:
           f"faltan: {faltan_terminos}")
     check("terminologia: el cuestionario usa Copilot Web / Copilot de Trabajo",
           "Copilot Web" in quiz_texto and "Copilot de Trabajo" in quiz_texto)
+
+    # revisión VII: los test de práctica de la página de ejercicios se corrigen y explican, pero no
+    # puntúan (no son la evaluación del curso).
+    practica = [x for x in quices if x["estado"]["isScorm"] == 0]
+    check(f"{N_TEST_PRACTICA} test de practica no evaluativos", len(practica) == N_TEST_PRACTICA,
+          f"{[x['id'] for x in practica]}")
+    check("test de practica: corrigen, explican y no puntuan",
+          all(x["estado"].get("evaluation") is not True
+              and all(p["msgHit"] and p["msgError"] and p["solution"] is not None
+                      for p in x["estado"]["questionsGame"]) for x in practica))
+    check("test de practica: cada pregunta con opciones",
+          all(len(p["options"]) >= 2 for x in practica for p in x["estado"]["questionsGame"]))
+
+    # revisión VII: recuadros de ideas clave (uno por página seleccionada, con su etiqueta y viñetas)
+    recuadros = [c for c in comps if '<aside class="caja-ideas-clave"' in c]
+    check(f"{N_RECUADROS} recuadros de ideas clave", len(recuadros) == N_RECUADROS,
+          f"{len(recuadros)}")
+    check("recuadros: role=note, etiqueta visible y 3+ viñetas",
+          all('role="note"' in c and "caja-ideas-clave-titulo" in c and c.count("<li>") >= 3
+              for c in recuadros),
+          f"viñetas: {[c.count('<li>') for c in recuadros]}")
+    check("recuadros: la línea «POSICIÓN:» no llega a la página",
+          "POSICIÓN" not in xml and "POSICI&#211;N" not in xml)
+
+    # revisión VII: las respuestas abiertas llevan su respuesta modelo EN el HTML. El exportador
+    # solo copia `ideviceId` al json-data del iDevice, así que dejar la retroalimentación en
+    # `textFeedbackTextarea` la hacía desaparecer del curso entregado (el ejercicio quedaba sin
+    # respuesta y sin botón).
+    abiertas = [c for c in comps if "feedbacktooglebutton" in c]
+    check(f"{N_RESPUESTAS_ABIERTAS} respuestas abiertas con su boton", len(abiertas) == N_RESPUESTAS_ABIERTAS,
+          f"{len(abiertas)}")
+    respuestas = [re.search(r'class="feedback js-feedback js-hidden">(.*?)</div>', c, re.S)
+                  for c in abiertas]
+    check("respuestas abiertas: la respuesta modelo viaja en el HTML",
+          all(m and len(m.group(1)) > 80 for m in respuestas),
+          f"longitudes: {[len(m.group(1)) if m else 0 for m in respuestas]}")
 
     # bloque de cumplimiento (revisión VI): el contenido mínimo del Art. 4 tiene que estar dentro
     todo = cuerpo + "\n" + quiz_texto
@@ -258,6 +322,12 @@ def revisar_export(ruta, etiqueta, scorm=False):
               f"faltan: {faltan}")
         check(f"{etiqueta}: pagina de ejercicios montada",
               any("ejercicios-practicos" in n for n in nombres))
+        # revisión VII: las respuestas modelo de las actividades abiertas tienen que llegar al
+        # HTML exportado. Dejarlas solo en las propiedades del iDevice las hacía desaparecer del
+        # curso (el exportador solo copia `ideviceId` al json-data).
+        check(f"{etiqueta}: respuestas abiertas con su boton de retroalimentacion",
+              html.count("feedbacktooglebutton") >= N_RESPUESTAS_ABIERTAS,
+              f"{html.count('feedbacktooglebutton')}")
         if scorm:
             man = z.read("imsmanifest.xml").decode("utf-8", "ignore")
             check("SCORM 1.2 (schemaversion)", "schemaversion>1.2" in man.replace(" ", ""))

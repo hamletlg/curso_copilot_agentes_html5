@@ -2,14 +2,16 @@
 
 **Proyecto:** curso e-learning «Agentes de IA y Microsoft Copilot para tu día a día»
 **Herramienta:** eXeLearning (local) → export **SCORM 1.2 + HTML5** (tema **Nova**)
-**Estado:** **revisión VI (13-sep-2026)**: el curso pasa a **25 páginas y 3,5 horas** con la
-**remediación de cumplimiento del Artículo 4** (7 páginas nuevas de fundamentos de IA, uso
-responsable y marco legal; vuelve la página de ejercicios con 4; cuestionario de **20 preguntas** con
-aprobado en el 70 %) y, con ella, el **expediente de evidencia** de `cumplimiento/` (memoria, matriz
-de trazabilidad, política de uso, acta y temario). Se mantienen los ajustes de las revisiones IV y V
-(un bloque por página, tema **Nova**, terminología sin etiquetas de licencia ni precios). Todo se
-aplica por código (guion y maestro → `content.xml` → CLI de eXeLearning) y se verifica sin navegador
-(80 comprobaciones) y en Chrome real.
+**Estado:** **revisión VII (22-sep-2026)**: sobre la base de la revisión VI (25 páginas y 3,5 horas,
+remediación del Artículo 4 y expediente de `cumplimiento/`), esta revisión **reescribe los textos de
+las 25 páginas** con un LLM local (Gemma 4 12B) para que suenen a persona y no a máquina, sin perder
+el registro profesional; añade un **recuadro de ideas clave** a mitad de página en 8 páginas (5, 10,
+14, 17, 18, 19, 21 y 22); y **monta la página de ejercicios con iDevices interactivos** (2 test de
+práctica que corrigen y explican sin puntuar + 2 respuestas abiertas con el botón de
+retroalimentación). Se mantienen los ajustes de las revisiones IV, V y VI (un bloque por página, tema
+**Nova**, terminología sin etiquetas de licencia ni precios). Todo se aplica por código (guion y
+maestro → `content.xml` → CLI de eXeLearning) y se verifica sin navegador (86 comprobaciones) y en
+Chrome real.
 **Objetivo del proyecto:** montar el curso y exportarlo → **conseguido**; queda la revisión del autor.
 
 Este documento existe para que quien retome el trabajo (persona o agente) no tenga que leer
@@ -41,15 +43,17 @@ todos los ficheros de la carpeta. Con estos **cinco** y este resumen, es suficie
 
 ## 2. ESTADO EN UNA LÍNEA
 
-**Hecho:** **25 páginas** (22 de contenido + ejercicios + cuestionario + cierre), 25 componentes
-(**24 iDevices Texto —uno por página, en un bloque sin titular— + 1 Cuestionario**), 10 imágenes,
-4 acordeones nativos, cuestionario de **20 preguntas** (14 correctas, 70 %) con 1 punto por pregunta y
-feedback por pregunta, tema **Nova** y el CSS propio del proyecto. `content.xml` validado contra el DTD
-y el XSD oficiales, y exportado a **`.elpx`**, **SCORM 1.2** y **HTML5** con el CLI de eXeLearning, sin
-tocar la interfaz. Verificado sin navegador (**80 comprobaciones**, incluidas las de terminología y las
-de cumplimiento del Art. 4) y en Chrome real: portada con overlay, diagramas, acordeón (despliega y
-pliega), tablas, navegación al pie y cuestionario (20 preguntas, aciertos registrados). Capturas en
-`entregables/capturas/rev6/`.
+**Hecho:** **25 páginas** (22 de contenido + ejercicios + cuestionario + cierre), **29 componentes**
+(**26 iDevices Texto** + **3 Cuestionario**: la evaluación final y los 2 test de práctica de la página
+de ejercicios) repartidos en 29 bloques, 10 imágenes, 4 acordeones nativos, **8 recuadros de ideas
+clave**, cuestionario de **20 preguntas** (14 correctas, 70 %) con 1 punto por pregunta y feedback por
+pregunta, tema **Nova** y el CSS propio del proyecto. `content.xml` validado contra el DTD y el XSD
+oficiales, y exportado a **`.elpx`**, **SCORM 1.2** y **HTML5** con el CLI de eXeLearning, sin tocar la
+interfaz. Verificado sin navegador (**86 comprobaciones**, incluidas las de terminología, las de
+cumplimiento del Art. 4, los recuadros y las respuestas abiertas) y en Chrome real: portada con
+overlay, diagramas, acordeón (despliega y pliega), tablas, navegación al pie, cuestionario (20
+preguntas, aciertos registrados), el recuadro con su estilo aplicado y la respuesta modelo que se
+despliega al pulsar el botón. Capturas en `entregables/capturas/rev7/`.
 
 **Pendiente (nada bloquea el material):**
 
@@ -169,10 +173,17 @@ páginas. Después reconstruye `entregables/html5_preview/` (la vista previa ant
 ## 6. REGLAS DEL MONTAJE (siguen vigentes si se retoca algo)
 
 1. **El guion manda.** No inventar texto: si falta contenido, está en `contenido_curso_copilot_agentes.md`.
-   Única excepción: el nodo **EJERCICIOS** del guion no se monta (decisión del autor, revisión IV).
-2. **Un iDevice Texto por página.** Los fragmentos del guion de cada nodo se concatenan en un único
-   iDevice Texto; el cuestionario es el único iDevice aparte. El recuento de iDevices del guion y su
-   traducción al catálogo real están en `idevices_equivalencias_exelearning4.md`.
+   La página de **EJERCICIOS** ya se monta (revisión VII): su introducción como texto y sus 4
+   actividades con iDevices nativos, tal como las trae su fila «Actividades interactivas».
+2. **Un iDevice Texto por página** (desde la revisión VII, con dos excepciones). Los fragmentos del
+   guion de cada nodo se concatenan en un único iDevice Texto, en un bloque sin titular; el
+   cuestionario es aparte. Excepciones de la página de EJERCICIOS: lleva 5 bloques (introducción,
+   2 test de práctica y 2 respuestas abiertas) y sus respuestas abiertas usan el botón de
+   retroalimentación del iDevice Texto. Ojo: esa retroalimentación tiene que viajar **en el
+   `htmlView`**, no solo en las propiedades del iDevice — el exportador solo copia `ideviceId` al
+   `data-idevice-json-data`, así que dejarla en `textFeedbackTextarea` la hace desaparecer del curso
+   (pasó, y lo caza la comprobación de fidelidad). El recuento de iDevices del guion y su traducción
+   al catálogo real están en `idevices_equivalencias_exelearning4.md`.
 3. **Recursos:** cada nodo usa exactamente el archivo de su fila «Recurso gráfico» y su texto
    alternativo, como imagen PNG.
 4. **Tema:** **Nova** (`userPreferences/theme`). El CSS propio del proyecto viaja en
@@ -207,6 +218,13 @@ páginas. Después reconstruye `entregables/html5_preview/` (la vista previa ant
     reconstruye con él el guion y el maestro (mismo texto, uno en formato guion y otro en prosa). El
     despacho de iDevices del generador es **por clave (título del nodo)**, no por número: para añadir o
     mover páginas no hay que tocar la lógica de montaje, solo la lista `ORDEN` del script.
-15. **El expediente de cumplimiento va aparte.** Lo que hace que el curso sea evidencia de una acción
+15. **Revisión VII: texto reescrito, recuadros y actividades interactivas.** Los 25 textos se
+    reescriben con un LLM local (`reescritura_humana/`) y al guion le crecen dos cosas: la fila
+    **«Recuadro de ideas clave»** (bloque de refuerzo a mitad de página, con anclaje por texto: el
+    ancla tiene que ser **única** en la página montada y el generador falla en voz alta si no lo es)
+    y la fila **«Actividades interactivas»** del nodo 23. Todo el trabajo y sus verificadores viven en
+    `reescritura_humana/`; el guion guarda copia de seguridad previa en
+    `legado_articulate/backups_guion/`.
+16. **El expediente de cumplimiento va aparte.** Lo que hace que el curso sea evidencia de una acción
     formativa (memoria, matriz de trazabilidad, política, acta y temario) vive en `cumplimiento/`; el
     curso no incluye esos documentos, los explica y los aprovecha (página 19 y página 21).
