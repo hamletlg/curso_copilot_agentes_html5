@@ -140,6 +140,33 @@ body.exe-web-site .Games-RepeatActivity{display:none !important}
         GUARDADO = parseInt(sessionStorage.getItem(CLAVE) || '', 10) || 0;
     } catch (e) {}
 
+    /* 5) Vista estrecha (≤750 px: es donde theme/style.css deja de poner el índice como barra
+       lateral, `#siteNav{float:none}`, y lo despliega a pantalla completa). El estado «menú
+       abierto» viaja en sessionStorage a la página siguiente, así que el panel tapa la página que
+       el alumno acaba de elegir. Aquí: al llegar sin preferencia guardada el menú empieza cerrado,
+       y al clicar una entrada se cierra antes de navegar. */
+    var CORTE_ESTRECHO = '(max-width: 750px)';
+    function esVistaEstrecha() {
+        // Señal real del tema (su propio isLowRes()): en estrecho #siteNav deja de flotar.
+        var n = document.getElementById('siteNav');
+        return !!n && getComputedStyle(n).float === 'none';
+    }
+    function cerrarMenu() {
+        document.documentElement.classList.add('siteNav-off');
+        if (document.body) document.body.classList.add('siteNav-off');
+        try {
+            sessionStorage.setItem('siteNav-off', '1');
+        } catch (e) {}
+    }
+    // Antes de pintar (este script va en el <head>): primera visita en el móvil -> cerrado.
+    try {
+        if (sessionStorage.getItem('siteNav-off') === null &&
+            window.matchMedia && window.matchMedia(CORTE_ESTRECHO).matches) {
+            sessionStorage.setItem('siteNav-off', '1');
+            document.documentElement.classList.add('siteNav-off');
+        }
+    } catch (e) {}
+
     function menu() {
         return document.querySelector('#siteNav > ul');
     }
@@ -219,7 +246,16 @@ body.exe-web-site .Games-RepeatActivity{display:none !important}
             Array.prototype.forEach.call(
                 document.querySelectorAll('#siteNav a[href]'),
                 function (a) {
-                    a.addEventListener('click', guardarYFijar);
+                    a.addEventListener('click', function (ev) {
+                        guardarYFijar();
+                        // En vista estrecha, elegir página cierra el menú: la página debe verse al
+                        // llegar. Se descartan los botones de desplegable del propio menú y los
+                        // enlaces que no navegan (anclas) o que abren otra pestaña.
+                        var href = a.getAttribute('href') || '';
+                        if (!href || href.charAt(0) === '#' || a.target === '_blank') return;
+                        if (ev.target && ev.target.closest && ev.target.closest('button')) return;
+                        if (esVistaEstrecha()) cerrarMenu();
+                    });
                 }
             );
         }

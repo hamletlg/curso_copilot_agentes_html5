@@ -42,6 +42,13 @@ Qué cambia
     la nota parcial después de cada pregunta) no adelanta ningún veredicto: informa de la
     puntuación acumulada.
 
+ 5. **El menú no tapa la página en vista estrecha.** En ≤750 px el tema deja de poner el índice
+    como barra lateral (`#siteNav{float:none}`) y lo despliega como un panel a pantalla completa
+    que, además, viaja abierto a la página siguiente (el estado va en `sessionStorage`). Aquí: al
+    llegar sin preferencia guardada el menú empieza cerrado, y al clicar una entrada se cierra,
+    para que la página elegida se vea sin tener que cerrarlo a mano. En escritorio no cambia nada
+    (el menú es la barra lateral y se queda abierto).
+
 Uso:
     python3 herramientas/ajustes_curso.py <ruta> [<ruta> ...]
     (cada <ruta> puede ser un directorio con las páginas en la raíz, un zip o un .elpx)
@@ -95,6 +102,33 @@ AJUSTES_JS = r"""
     var GUARDADO = 0;
     try {
         GUARDADO = parseInt(sessionStorage.getItem(CLAVE) || '', 10) || 0;
+    } catch (e) {}
+
+    /* 5) Vista estrecha (≤750 px: es donde theme/style.css deja de poner el índice como barra
+       lateral, `#siteNav{float:none}`, y lo despliega a pantalla completa). El estado «menú
+       abierto» viaja en sessionStorage a la página siguiente, así que el panel tapa la página que
+       el alumno acaba de elegir. Aquí: al llegar sin preferencia guardada el menú empieza cerrado,
+       y al clicar una entrada se cierra antes de navegar. */
+    var CORTE_ESTRECHO = '(max-width: 750px)';
+    function esVistaEstrecha() {
+        // Señal real del tema (su propio isLowRes()): en estrecho #siteNav deja de flotar.
+        var n = document.getElementById('siteNav');
+        return !!n && getComputedStyle(n).float === 'none';
+    }
+    function cerrarMenu() {
+        document.documentElement.classList.add('siteNav-off');
+        if (document.body) document.body.classList.add('siteNav-off');
+        try {
+            sessionStorage.setItem('siteNav-off', '1');
+        } catch (e) {}
+    }
+    // Antes de pintar (este script va en el <head>): primera visita en el móvil -> cerrado.
+    try {
+        if (sessionStorage.getItem('siteNav-off') === null &&
+            window.matchMedia && window.matchMedia(CORTE_ESTRECHO).matches) {
+            sessionStorage.setItem('siteNav-off', '1');
+            document.documentElement.classList.add('siteNav-off');
+        }
     } catch (e) {}
 
     function menu() {
@@ -176,7 +210,16 @@ AJUSTES_JS = r"""
             Array.prototype.forEach.call(
                 document.querySelectorAll('#siteNav a[href]'),
                 function (a) {
-                    a.addEventListener('click', guardarYFijar);
+                    a.addEventListener('click', function (ev) {
+                        guardarYFijar();
+                        // En vista estrecha, elegir página cierra el menú: la página debe verse al
+                        // llegar. Se descartan los botones de desplegable del propio menú y los
+                        // enlaces que no navegan (anclas) o que abren otra pestaña.
+                        var href = a.getAttribute('href') || '';
+                        if (!href || href.charAt(0) === '#' || a.target === '_blank') return;
+                        if (ev.target && ev.target.closest && ev.target.closest('button')) return;
+                        if (esVistaEstrecha()) cerrarMenu();
+                    });
                 }
             );
         }
