@@ -39,13 +39,29 @@ python3 "$RAIZ/herramientas/postproceso_export.py" \
     "$ENT/curso_copilot_agentes_scorm12.zip" \
     "$ENT/curso_copilot_agentes_html5.zip"
 
-# vista previa HTML5 descomprimida (para inspeccionar y para las pruebas de interacción)
-# La anterior no se borra: se archiva en entregables/historial/.
-if [ -d "$ENT/html5_preview" ]; then
-    mkdir -p "$ENT/historial"
-    mv "$ENT/html5_preview" "$ENT/historial/html5_preview_$(date +%Y%m%d%H%M%S)"
-fi
-mkdir -p "$ENT/html5_preview"
-cd "$ENT/html5_preview" && unzip -q "$ENT/curso_copilot_agentes_html5.zip"
+# ajustes del curso (idempotente y sin navegador): menú lateral con memoria, test como evaluación
+# (gameMode 1, sin reloj, veredicto del 70 %) y CSS de los avisos. Se aplican a las TRES salidas.
+# Sin este paso los paquetes exportados pierden los ajustes y `publicar_docs.sh` aborta.
+python3 "$RAIZ/herramientas/ajustes_curso.py" \
+    "$ENT/curso_copilot_agentes.elpx" \
+    "$ENT/curso_copilot_agentes_scorm12.zip" \
+    "$ENT/curso_copilot_agentes_html5.zip"
 
-echo "OK: .elpx + SCORM 1.2 + HTML5 en entregables/ y vista previa reconstruida"
+# paquetes descomprimidos, siempre desde el zip ya ajustado:
+#  - entregables/html5_preview/            -> para inspeccionar y para las pruebas de interacción
+#  - entregables/curso_copilot_agentes_html5/ -> paquete entregable descomprimido (lo que se publica)
+# La versión anterior de cada uno no se borra: se archiva en entregables/historial/.
+mkdir -p "$ENT/historial"
+for par in "html5_preview:html5_preview" "curso_copilot_agentes_html5:curso_copilot_agentes_html5"; do
+    DESTINO="$ENT/${par%%:*}"
+    ETIQUETA="${par##*:}"
+    if [ -d "$DESTINO" ]; then
+        mv "$DESTINO" "$ENT/historial/${ETIQUETA}_$(date +%Y%m%d%H%M%S)"
+    fi
+    mkdir -p "$DESTINO"
+    (cd "$DESTINO" && unzip -q "$ENT/curso_copilot_agentes_html5.zip")
+done
+
+python3 "$RAIZ/herramientas/verificar_enlaces.py" "$ENT/curso_copilot_agentes_html5"
+
+echo "OK: .elpx + SCORM 1.2 + HTML5 (con ajustes) en entregables/ y paquetes descomprimidos reconstruidos"

@@ -118,8 +118,9 @@ sobre alfabetización en IA (`digital-strategy.ec.europa.eu`), el **Reglamento (
 | `entregables/curso_copilot_agentes_scorm12.zip` | **Paquete SCORM 1.2** (1,6 MB): el que se sube al LMS |
 | `entregables/curso_copilot_agentes_html5.zip` | Export **HTML5** para publicar sin LMS |
 | `entregables/curso_copilot_agentes.elpx` | Proyecto completo abrible en eXeLearning (tema Nova, iDevices) |
+| `entregables/curso_copilot_agentes_html5/` | El mismo HTML5 **descomprimido** (el paquete que se publica; se reconstruye desde el zip en `exportar.sh`) |
 | `entregables/content.xml` | Fuente generada (validada contra DTD/XSD) |
-| `docs/` | El HTML5 desplegado, listo para GitHub Pages |
+| `docs/` | El HTML5 desplegado, listo para GitHub Pages (lo que sirve el sitio) |
 
 **Nota de implantación:** la **nota de corte (70 %)** se configura en el LMS, no viaja en el paquete
 SCORM 1.2 (el estándar lee `cmi.student_data.mastery_score`; por defecto usaría 50).
@@ -140,11 +141,37 @@ SCORM 1.2 (el estándar lee `cmi.student_data.mastery_score`; por defecto usarí
 ```
 python3 herramientas/revision_vi.py          # solo si hay que reaplicar la revisión VI
 python3 herramientas/generar_curso_elpx.py --check
-sh herramientas/exportar.sh
+sh herramientas/exportar.sh                  # exporta y APLICA los ajustes del curso a los 3 paquetes
 python3 herramientas/verificar_paquete.py
 python3 herramientas/pruebas_interaccion.py
 sh herramientas/publicar_docs.sh             # actualiza docs/ (demo de GitHub Pages)
 ```
+
+### Republicar la demo (GitHub Pages)
+
+`publicar_docs.sh` copia el **paquete descomprimido entregable** (`entregables/curso_copilot_agentes_html5/`)
+en `docs/`, que es lo que sirve el sitio: <https://hamletlg.github.io/curso_copilot_agentes_html5/>.
+
+```
+sh herramientas/publicar_docs.sh --verificar   # ¿docs/ ya es la versión final? (no escribe nada)
+sh herramientas/publicar_docs.sh               # copia, verifica y deja los comandos de git
+sh herramientas/publicar_docs.sh --push        # copia, verifica, commitea, empuja y espera a Pages
+```
+
+Guardas incorporadas (existen porque ya pasó: `docs/` llegó a servir la revisión anterior):
+
+- **Origen único:** siempre el paquete descomprimido entregable, nunca `entregables/html5_preview/`
+  (una preview intermedia puede quedarse de una exportación vieja).
+- **Aborta si el origen no lleva los ajustes del curso** (busca la marca «ajustes del curso»), que
+  es lo que aplica `ajustes_curso.py` — ya integrado en `exportar.sh`, así que una exportación
+  completa los lleva siempre.
+- **Aborta si el paquete descomprimido y el `.zip` entregable no coinciden** (`index.html`).
+- **`docs/` se reemplaza entero** (la versión anterior se archiva en `entregables/historial/docs_*`):
+  no sobreviven páginas de revisiones previas.
+- **Verificación posterior:** `index.html` idéntico (md5), `.nojekyll` presente, ninguna página
+  sobrante y `verificar_enlaces.py` sin referencias rotas. Si algo falla, sale con error.
+
+`--forzar` salta las dos guardas de contenido (para publicar a sabiendas algo sin ajustes).
 
 ---
 
