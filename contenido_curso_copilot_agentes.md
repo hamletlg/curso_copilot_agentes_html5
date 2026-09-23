@@ -67,37 +67,37 @@ Un recorrido práctico de 3,5 horas para entender qué son los agentes de IA, c�
 Este curso tiene una duración de **3,5 horas** y se divide en cuatro bloques. Las tres primeras partes se centran en el uso de Copilot con criterio. La cuarta sección explica los requisitos legales y lo que tu empresa debe poder demostrar.
 
 #### Parte 1: Fundamentos de IA
-- ¿Qué es la IA? De la IA al agente (Nodo 3)
-- Capacidades y limitaciones de la IA (Nodo 4)
-- ¿Qué es un agente de IA? (Nodo 5)
-- Copilot Web y Copilot de Trabajo (Nodo 6)
-- Los 5 componentes del agente (Nodo 7)
-- Tipos de agente de Microsoft (Nodo 8)
-- Ciclo de trabajo del agente (Nodo 9)
+- ¿Qué es la IA? De la IA al agente
+- Capacidades y limitaciones de la IA
+- ¿Qué es un agente de IA?
+- Copilot Web y Copilot de Trabajo
+- Los 5 componentes del agente
+- Tipos de agente de Microsoft
+- Ciclo de trabajo del agente
 
 #### Parte 2: Copilot en el entorno de trabajo
-- Copilot en Word, Outlook y OneNote (Nodo 10)
-- Copilot en Excel, PowerPoint y Teams (Nodo 11)
-- Copilot en SharePoint, Loop y planificación (Nodo 12)
-- Creación de agentes con Agent Builder (Nodo 13)
-- Inventario de IA de tu empresa (Nodo 14)
+- Copilot en Word, Outlook y OneNote
+- Copilot en Excel, PowerPoint y Teams
+- Copilot en SharePoint, Loop y planificación
+- Creación de agentes con Agent Builder
+- Inventario de IA de tu empresa
 
 #### Parte 3: Uso responsable
-- Redacción de instrucciones (Nodo 15)
-- Buenas prácticas (Nodo 16)
-- Riesgos y límites (Nodo 17)
-- Permisos, sobreexposición y shadow AI (Nodo 18)
-- Política de uso y protocolo de incidentes (Nodo 19)
+- Redacción de instrucciones
+- Buenas prácticas
+- Riesgos y límites
+- Permisos, sobreexposición y shadow AI
+- Política de uso y protocolo de incidentes
 
 #### Parte 4: Marco legal y obligaciones
-- El AI Act en términos simples (Nodo 20)
-- Artículo 4: obligaciones y requisitos de demostración (Nodo 21)
-- Datos personales, derechos y supervisión humana (Nodo 22)
+- El AI Act en términos simples
+- Artículo 4: obligaciones y requisitos de demostración
+- Datos personales, derechos y supervisión humana
 
 #### Cierre y evaluación
-- Ejercicios prácticos: 4 ejercicios con respuestas (Nodo 23)
-- Evaluación final: 20 preguntas, 14 correctas para aprobar (Nodo 24)
-- Resumen, glosario y recursos (Nodo 25)
+- Ejercicios prácticos: 4 ejercicios con respuestas
+- Evaluación final: 20 preguntas, 14 correctas para aprobar
+- Resumen, glosario y recursos
 
 #### Objetivos del curso
 
@@ -269,12 +269,20 @@ Agente especializado en reuniones de Teams. Toma notas, ofrece respuestas rápid
 *Ejemplo:* Durante una reunión de Teams, Facilitator transcribe en directo, detecta los acuerdos y entrega al finalizar un resumen con las tareas y los responsables.
 
 **Sección 4: Cowork — el ejecutor de tareas complejas (nivel 3)**
-Es un agente avanzado que ejecuta tareas de varios pasos en segundo plano. El usuario describe el resultado deseado, Cowork crea un plan, lo ejecuta paso a paso y envía actualizaciones. Permite interrumpir, corregir o pausar el proceso en cualquier momento. (Es el mismo Cowork que aparece en el Nodo 9 al explicar el ciclo de trabajo.)
+Es un agente avanzado que ejecuta tareas de varios pasos en segundo plano. El usuario describe el resultado deseado, Cowork crea un plan, lo ejecuta paso a paso y envía actualizaciones. Permite interrumpir, corregir o pausar el proceso en cualquier momento. (Es el mismo Cowork que aparece al explicar el ciclo de trabajo.)
 
 *Ejemplo:* *"Prepara una presentación con los resultados del último trimestre, envía un correo al equipo directivo con un resumen y agenda una reunión para discutirlos."* Cowork crea la presentación en PowerPoint, redacta el correo en Outlook y crea el evento en el calendario, con puntos de aprobación para ti.
 
 **Sección 5: Agentes personalizados — los que creas tú (nivel 2)**
-Puedes crear agentes para tareas específicas de tu empresa mediante Agent Builder, sin necesidad de programar. Estos agentes tienen un rol concreto y una base de conocimiento acotada. Por ejemplo, un agente que responde preguntas sobre las políticas de vacaciones usando el documento de Recursos Humanos de SharePoint. (Los pasos para crearlo están en el Nodo 13.)
+Puedes crear agentes para tareas específicas de tu empresa mediante Agent Builder, sin necesidad de programar. Estos agentes tienen un rol concreto y una base de conocimiento acotada. Por ejemplo, un agente que responde preguntas sobre las políticas de vacaciones usando el documento de Recursos Humanos de SharePoint.
+
+**Recuerda que** — *recuadro de refuerzo que se monta a mitad de página*
+
+*Posición:* tras «Es útil identificar a qué nivel pertenece cada uno y en qué casos corresponde usarlo».
+
+- **Nivel 1 · Asistente (chatbot estándar):** responde y se detiene; no actúa sobre tus sistemas.
+- **Nivel 2 · Especializado (declarativo):** tiene un rol concreto y una base de conocimiento acotada. Se crea sin programar con Agent Builder.
+- **Nivel 3 · Avanzado (Copilot Studio):** actúa, se conecta a servicios externos y automatiza flujos con disparadores.
 
 ---
 
@@ -377,7 +385,7 @@ En Teams, Copilot responde preguntas sobre conversaciones previas, resume canale
 **¿Dónde está Copilot? (ruta de clic)**
 - **Excel:** botón Copilot en la **esquina inferior derecha** de la hoja ▸ se abre el *Excel Agent* en el panel derecho; escribe la petición o elige una acción sugerida.
 - **PowerPoint:** botón Copilot en la **esquina inferior derecha** de la diapositiva ▸ *PowerPoint Agent* en el panel derecho.
-- **Teams:** mismo punto de entrada que en el Nodo 10 (barra superior del chat y de la reunión).
+- **Teams:** mismo punto de entrada (barra superior del chat y de la reunión).
 
 ---
 
@@ -628,7 +636,7 @@ Con Copilot, cualquier usuario puede escribir *«resume los datos de personal de
 - **Verificar los enlaces compartidos.** Asegúrate de que lo que compartiste "temporalmente" tenga una fecha de caducidad o esté cerrado.
 - **Usar las etiquetas de confidencialidad** de la organización: estas marcan el documento y se mantienen durante su uso.
 - **Consultar antes de crear un agente.** Un agente hereda los permisos de las fuentes conectadas. Si le das acceso a una carpeta abierta, el agente mostrará esa información a cualquier usuario.
-- **Identificar a quién avisar.** Un documento expuesto no es un problema técnico: es un incidente que debe comunicarse (Nodo 19).
+- **Identificar a quién avisar.** Un documento expuesto no es un problema técnico: es un incidente que debe comunicarse.
 
 #### Y de nuevo el shadow AI
 
@@ -799,12 +807,12 @@ La Oficina Europea de IA publicó una guía con los pasos mínimos que debe cons
 
 | Paso | Qué tiene que responder | Dónde se cubre en este curso |
 |---|---|---|
-| **a) Comprensión general de la IA** | ¿Qué es la IA? ¿Cómo funciona? ¿Qué IA usamos en la organización? ¿Qué oportunidades y peligros tiene? | Nodos 3, 4 y 14 |
-| **b) El papel de la organización** | ¿Desarrollamos sistemas de IA o solo los usamos? | Nodo 20 |
-| **c) El riesgo de los sistemas** | ¿Qué necesitan saber las personas que los usan? ¿Qué riesgos hay que conocer y mitigar? | Nodos 17, 18 y 20 |
+| **a) Comprensión general de la IA** | ¿Qué es la IA? ¿Cómo funciona? ¿Qué IA usamos en la organización? ¿Qué oportunidades y peligros tiene? | Partes 1 y 2 |
+| **b) El papel de la organización** | ¿Desarrollamos sistemas de IA o solo los usamos? | Parte 4 |
+| **c) El riesgo de los sistemas** | ¿Qué necesitan saber las personas que los usan? ¿Qué riesgos hay que conocer y mitigar? | Partes 3 y 4 |
 | **d) Adaptar la formación** | ¿Cuánto sabe cada persona? ¿En qué contexto y para qué se usa la IA? | Este curso en conjunto, más las acciones por perfil de cada empresa |
 
-Los cuatro pasos incluyen **aspectos legales y éticos**, que se detallan en los Nodos 19, 21 y 22. Para los sistemas de alto riesgo, el AI Act añade una obligación específica: el personal que los maneja debe estar formado para ejercer la **supervisión humana** (Artículo 26).
+Los cuatro pasos incluyen **aspectos legales y éticos**. Para los sistemas de alto riesgo, el AI Act añade una obligación específica: el personal que los maneja debe estar formado para ejercer la **supervisión humana** (Artículo 26).
 
 #### Qué tiene que poder demostrar tu empresa
 
@@ -876,7 +884,7 @@ En una oficina como la de este curso, es poco probable que existan decisiones au
 - **Antes de escribir, evalúa a la persona:** ¿le importaría que este dato estuviera en este lugar? Si la respuesta es sí, no lo incluyas.
 - **Usa la cantidad mínima de datos.** Para pedir un resumen no necesitas nombres: puedes sustituirlos por iniciales o por roles («el cliente A»).
 - **Verifica la herramienta.** Asegúrate de que esté autorizada por tu empresa y revisa qué dice la política sobre los datos de los clientes.
-- **Si detectas algo que no deberías ver, no lo reenvíes:** detente y comunícalo (Nodo 19).
+- **Si detectas algo que no deberías ver, no lo reenvíes:** detente y comunícalo.
 
 > **Nota:** Proteger los datos consiste en tratar a las personas con respeto. En el entorno laboral, esta práctica cumple con la normativa legal y las políticas de tu empresa.
 
@@ -974,7 +982,7 @@ c) BAJO
 **Retroalimentación:** Tareas: preparar el acta de la reunión semanal, resumir el hilo de correos de un cliente antes de responder y pasar las notas de una visita a un documento de seguimiento.
 Instrucción de ejemplo: «Resume este hilo de correo en cinco puntos y redacta una respuesta de 80 palabras confirmando la reunión del jueves. Tono profesional. Muéstrame el borrador antes de enviarlo.»
 Riesgos: (1) que Copilot muestre documentos con permisos incorrectos; se reduce revisando los permisos de lo sensible. (2) que un borrador se envíe sin revisión; se reduce aplicando la regla de revisión humana y pidiendo el borrador antes del envío.
-Si aparece información de más: no la uses, no la reenvíes y comunícalo por el canal de incidentes (Nodo 19). Si ves información que no te corresponde, es una señal de que hay que corregir los permisos.
+Si aparece información de más: no la uses, no la reenvíes y comunícalo por el canal de incidentes. Si ves información que no te corresponde, es una señal de que hay que corregir los permisos.
 
 ---
 

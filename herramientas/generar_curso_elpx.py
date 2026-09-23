@@ -277,7 +277,7 @@ def markdown_a_html(contenido: str) -> str:
     # Separadores decorativos del guion («---» sueltos). NO vale un replace a secas: las filas de
     # separación de las tablas están hechas de guiones («|-------|») y un replace de «---» las
     # troceaba, dejando una fila fantasma de guiones dentro de la tabla.
-    contenido = re.sub(r"(?<![\w-])---(?![\w-])", "\n", contenido)
+    contenido = re.sub(r"(?<![\w|-])---(?![\w|-])", "\n", contenido)
     bloques = re.split(r"(?:<br\s*/?>\s*){2,}", contenido)
     return "".join(render_bloque(b) for b in bloques if b.strip())
 

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t d" width="800" height="500">
-<title id="t">Los cuatro niveles de riesgo del AI Act</title>
+<title id="t">Los cuatro niveles de riesgo del Reglamento de Inteligencia Artificial</title>
 <desc id="d">Cuatro bandas de color, de más a menos restrictiva: riesgo inaceptable o prohibido, alto riesgo, riesgo limitado y riesgo mínimo, con un ejemplo en cada una.</desc>
 <rect width="800" height="500" fill="#FFFFFF"/>
-<text x="400" y="46" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1E293B">Los cuatro niveles de riesgo del AI Act</text>
+<text x="400" y="46" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#1E293B">Los cuatro niveles de riesgo del Reglamento de Inteligencia Artificial</text>
 <text x="400" y="74" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, Helvetica, sans-serif" font-size="16" fill="#1E293B" opacity="0.75">Cuanto mayor es el riesgo, más obligaciones (y más prohibiciones)</text>
 
 <rect x="50" y="104" width="700" height="78" rx="10" fill="#991B1B"/>
