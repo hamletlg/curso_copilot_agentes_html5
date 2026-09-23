@@ -1,5 +1,0 @@
-**Ideas clave**
-- Verifica siempre los datos concretos que genere Copilot porque la herramienta puede producir información falsa o incorrecta.
-- Asume la responsabilidad final de los resultados obtenidos ya que la herramienta no evalúa las implicaciones éticas de las tareas.
-- Utiliza Copilot para mejorar tu rendimiento laboral sin permitir que la herramienta sustituya tus propias habilidades y capacidades.
-- Cumple las normas de tu organización y respeta los controles de TI para proteger la información privada de tu empresa.

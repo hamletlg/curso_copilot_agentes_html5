@@ -1,4 +1,0 @@
-**Ideas clave**
-- Identifica la diferencia entre un chatbot y un agente por su capacidad para ejecutar acciones en lugar de solo generar texto.
-- Utiliza agentes de IA para automatizar flujos de trabajo que requieran interactuar con diversas herramientas de tu entorno laboral.
-- Elige el nivel de agente adecuado según necesites una respuesta conversacional simple o una ejecución proactiva de tareas.

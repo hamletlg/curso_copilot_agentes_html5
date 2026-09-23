@@ -1,5 +1,0 @@
-**Ideas clave**
-- Proporciona formación en alfabetización de IA a tus empleados y a los proveedores que operen estos sistemas.
-- Documenta el temario, la lista de asistentes, los resultados de la evaluación y la política de uso vigente.
-- Guarda toda la documentación de la formación y las revisiones durante un plazo mínimo de cuatro años.
-- Actualiza periódicamente la formación y la política de uso para demostrar las acciones realizadas ante una auditoría.

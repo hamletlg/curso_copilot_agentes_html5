@@ -1,5 +1,0 @@
-**Ideas clave**
-- Usa Copilot en Word para generar borradores, resumir textos extensos y ajustar el tono de tus documentos.
-- Resume hilos de correo en Outlook para extraer tareas y redactar respuestas breves con un solo clic.
-- Consulta los resúmenes en Teams para conocer los acuerdos y las tareas asignadas tras una reunión.
-- Organiza tus notas en OneNote pidiendo a Copilot que estructure el contenido con títulos y secciones claras.
