@@ -2,10 +2,12 @@
 
 Curso **SCORM 1.2 / HTML5** de **25 páginas y 4 horas** sobre el uso responsable de la IA.
 
+**Ver el curso online:** https://hamletlg.github.io/curso_copilot_agentes_html5/
+_(25 páginas navegables, sin instalación y sin registro)_
+
 ## 1. Qué problema resuelve
 
 El Artículo 4 del AI Act obliga desde febrero de 2025 a **adoptar medidas para apoyar el desarrollo de
 la alfabetización en IA** del personal (y de terceros que operen los sistemas por cuenta de la
 organización). 
-
 
